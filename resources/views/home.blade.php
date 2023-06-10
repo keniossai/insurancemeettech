@@ -1,1740 +1,1008 @@
-@extends('layouts.include')
+@extends('layouts.app')
 
-
-<style>
-    .bg-image {
-        background-image: url('assets/images/background/landing.png');
-    }
-
-    .placeholder {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0;
-    }
-
-    .loading {
-        width: 100%;
-        height: 100px;
-        /* background: #000; */
-        /* z-index: 9999; */
-    }
-
-    .loading-text {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-        text-align: center;
-        width: 100%;
-        height: 100px;
-        line-height: 100px;
-        font-size: 20px;
-    }
-
-    .loading-text span {
-        display: inline-block;
-        margin: 0 5px;
-        color: #000;
-        font-family: 'Quattrocento Sans', sans-serif;
-    }
-
-    .loading-text span:nth-child(1) {
-        filter: blur(0px);
-        animation: blur-text 1.5s 0s infinite linear alternate;
-    }
-
-    .loading-text span:nth-child(2) {
-        filter: blur(0px);
-        animation: blur-text 1.5s 0.2s infinite linear alternate;
-    }
-
-    .loading-text span:nth-child(3) {
-        filter: blur(0px);
-        animation: blur-text 1.5s 0.4s infinite linear alternate;
-    }
-
-    .loading-text span:nth-child(4) {
-        filter: blur(0px);
-        animation: blur-text 1.5s 0.6s infinite linear alternate;
-    }
-
-    .loading-text span:nth-child(5) {
-        filter: blur(0px);
-        animation: blur-text 1.5s 0.8s infinite linear alternate;
-    }
-
-    .loading-text span:nth-child(6) {
-        filter: blur(0px);
-        animation: blur-text 1.5s 1s infinite linear alternate;
-    }
-
-    .loading-text span:nth-child(7) {
-        filter: blur(0px);
-        animation: blur-text 1.5s 1.2s infinite linear alternate;
-    }
-
-    .loading-text span:nth-child(8) {
-        filter: blur(0px);
-        animation: blur-text 1.5s 1.4s infinite linear alternate;
-    }
-
-    .loading-text span:nth-child(9) {
-        filter: blur(0px);
-        animation: blur-text 1.5s 1.6s infinite linear alternate;
-    }
-
-    .loading-text span:nth-child(10) {
-        filter: blur(0px);
-        animation: blur-text 1.5s 1.8s infinite linear alternate;
-    }
-
-    .loading-text span:nth-child(11) {
-        filter: blur(0px);
-        animation: blur-text 1.5s 2s infinite linear alternate;
-    }
-
-    .loading-text span:nth-child(12) {
-        filter: blur(0px);
-        animation: blur-text 1.5s 2.2s infinite linear alternate;
-    }
-
-    @keyframes blur-text {
-        0% {
-            filter: blur(0px);
-        }
-
-        100% {
-            filter: blur(2px);
-        }
-    }
-
-
-    .news{
-        width: 160px
-    }
-    .dot{
-        height: 6px;
-        width: 6px;
-        margin-left: 3px;
-        margin-right: 3px;
-        margin-top: 2px !important;
-        background-color: rgb(207,23,23);
-        border-radius: 50%;
-        display: inline-block
-        }
-    .breaking-news{
-        background-color: #060606;
-    }
-
-    .news-scroll h5{
-        color: white;
-    }
-    /* 88888888888888888 */
-
-    /* Marquee */
-    .marquee {
-    width: 100%;
-    margin: 0 auto;
-    overflow: hidden;
-    white-space: nowrap;
-    box-sizing: border-box;
-    animation: marquee 50s linear infinite;
-}
-
-.marquee:hover {
-    animation-play-state: paused
-}
-
-/* Make it move */
-@keyframes marquee {
-    0%   { text-indent: 27.5em }
-    100% { text-indent: -105em }
-}
-
-/* Make it pretty */
-.nba {
-    padding-left: 1.5em;
-    position: relative;
-    font: 16px 'Segoe UI', Tahoma, Helvetica, Sans-Serif;
-    color: white;
-}
-
-
-/* ::before was :before before ::before was ::before - kthx */
-
-
-.shadow-lg{
-    top: 67%;
-    z-index:100;
-    width: 80%;
-    min-height:20%;
-    padding:10px 20px;
-    background-image:url('assets/images/notice.png');
-    background-size: cover;
-}
-
-@media screen and (min-width: 768px){
-    #register-modal .shadow-lg p{
-       font-size: 20px;
-    }
-}
-
-</style>
 
 @section('content')
-    {{-- <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="d-flex justify-content-between align-items-center breaking-news">
-                    <div class="d-flex flex-row flex-grow-1 flex-fill justify-content-center bg-danger notice py-2 text-white px-1 news"><span class="d-flex align-items-center">Important Notice</span></div>
-                    <p class="nba marquee">Please be informed that this website will be unavailable from 10 p.m. on May 23, 2023, to 6 a.m. on May 24, 2023. This is because we are conducting routine maintenance on the location. We sincerely regret any inconvenience.</p>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
-
-    <section class="banner-section-two">
-        <div class="outer-container clearfix">
-            <!--Image Column-->
-
-            <div class="image-column bg-image">
-                <div class="image">
-                    <img src="{{ asset('assets/images/resource/mobile.png') }}" alt="">
-                </div>
-            </div>
-            <!--Content Column-->
-            <div class="content-column">
-                <div class="curve-one"></div>
-                <div class="curve-two"></div>
-                <div class="image-layer"
-                    style="background-image: url({{ asset('assets/images/background/pattern-5.png') }})"></div>
-                <div class="content-box">
-                    <div class="title-box">
-                        <div class="title" style="color: #fff;">Hurry Up & Enroll Today, Before It’s Late!</div>
-                        <h2>NBA Conference 2023</h2>
-                        <ul class="event-list">
-                            <li>August 25th-September 1st</li>
-                            <li>M.K.O Abiola Stadium</li>
-                            <li>Abuja, Nigeria</li>
-                        </ul>
-                        <div class="separator"></div>
-                    </div>
-                    <div class="time-box">
-                        <div class="time-counter style-two">
-                            <div class="time-countdown clearfix" data-countdown="2023/8/25"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            {{-- modal --}}
-
-            <div id="register-modal" class="d-flex w-100 justify-content-center ">
-                <div class="position-fixed bg-light shadow-lg mx-auto d-flex justify-content-center align-items-center">
-                    <p class="" style="font-weight: 700; font-size:1.7rem; color:white; padding: 0px 20px;">
-                        Join us at the NBA Conference 2023 August 25th - September 1st
-                    </p>
-                    {{-- <button class="px-3 py-2 mb-2 bg-info text-light" style="border-radius:5%; margin-left:4px;">REGISTER
-                        NOW</button> --}}
-                    <div class="button-box text-center">
-                        <a href="{{ route('register') }}" class="theme-btn btn-style-one"
-                            style="border-radius:10px; margin-left:6px; margin-bottom:4px;">register</a>
-                    </div>
-                    <div id="close-register"
-                        style="position: absolute; top:0; right:0; padding-top:10px; padding-right:10px; color:black; font-weight:500;
-                    font-size:1.2rem; cursor: pointer;">
-                        &#10006;</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Banner Section -->
-
-
-    <!-- Market Section -->
-    <section class="market-section">
-        <div class="section-icons">
-            <!-- Icon One -->
-            <div class="icon icon-one"></div>
-            <!-- Icon Two -->
-            <div class="icon icon-two"><img src="{{ asset('assets/images/icons/icon-19.png') }}" alt="" /></div>
-            <!-- Icon Three -->
-            <div class="icon icon-three"><img src="{{ asset('assets/images/icons/icon-20.png') }}" alt="" /></div>
-            <!-- Icon Four -->
-            <div class="icon icon-four"><img src="{{ asset('assets/images/icons/icon-21.png') }}" alt="" /></div>
-        </div>
-        <div class="auto-container">
-            <div class="row clearfix">
-
-                <!-- Content Column -->
-                <div class="content-column col-lg-7 col-md-12 col-sm-12">
-                    <div class="inner-column">
-                        <!-- Sec Title -->
-                        <div class="sec-title">
-                            <div class="title">A Must Attend</div>
-                            <h2>Many Expert Speakers</h2>
-                            <div class="separator"></div>
-                        </div>
-                        <div class="text">Plenary sessions/interactive panels with Q&As from the floor: with panelists
-                            drawn from UN
-                            agencies; key experts; civil society and State representatives;.</div>
-                        <div class="row clearfix">
-
-                            <!-- Feature Block Two -->
-                            <div class="feature-block-two col-lg-6 col-md-6 col-sm-12">
-                                <div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-                                    <div class="icon-box">
-                                        <span class="icon flaticon-seminar"></span>
+    <!-- Hero Start -->
+        <div class="swiper hero-slide">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="exvent-hero-section-05" style="background-image: url(assets/images/bg/slider-bg-1.jpg);">
+                        <div class="container">
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-md-8 text-center">
+                                    <div class="hero-conent-wrapper">
+                                        <div class="top-title-date" data-aos="fade-down" data-aos-delay="500">
+                                            <span>January 20, 2023</span>
+                                        </div>
+                                        <div class="main-title" data-aos="fade-down" data-aos-delay="1000">
+                                            <h1>World Tech Conference 2023</h1>
+                                        </div>
+                                        <ul class="hero-meta" data-aos="fade-right" data-aos-delay="1500">
+                                            <li class="meta-item">
+                                                <a href="pricing.html"><i class="fas fa-chair"></i> 2500 Seats</a>
+                                            </li>
+                                            <li class="meta-item">
+                                                <a href="speaker-01.html"><i class="fas fa-user"></i> 20 Speakers</a>
+                                            </li>
+                                            <li class="meta-item">
+                                                <a href="contact.html"><i class="fas fa-map-marker-alt"></i> Boston, Canada</a>
+                                            </li>
+                                        </ul>
+                                        <div class="hero-btn" data-aos="fade-up" data-aos-delay="2000">
+                                            <div class="row justify-content-center">
+                                                <div class="col-lg-3 col-sm-4 col-6">
+                                                    <button class="btn-5">Book Now</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <h3><a href="javascript:void();">Awesome Discussions</h3>
-                                    <p class="feature-text">Panel discussions and speeches from world renowned leaders.</p>
                                 </div>
                             </div>
-
-                            <!-- Feature Block Two -->
-                            <div class="feature-block-two col-lg-6 col-md-6 col-sm-12">
-                                <div class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
-                                    <div class="icon-box">
-                                        <span class="icon flaticon-elearning-2"></span>
-                                    </div>
-                                    <h3><a href="javascript:void();">Foster Bonding</h3>
-                                    <p class="feature-text">
-                                        Foster bonding and mentoring between bar leaders and millennials.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <!-- Feature Block Two -->
-                            <div class="feature-block-two col-lg-6 col-md-6 col-sm-12">
-                                <div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-                                    <div class="icon-box">
-                                        <span class="icon flaticon-conversation-1"></span>
-                                    </div>
-                                    <h3><a href="javascript:void();">Engage New Ideas</h3>
-                                    <p class="feature-text">New ideas, technical training and knowledge exchanges for
-                                        lawyers;</p>
-                                </div>
-                            </div>
-
-                            <!-- Feature Block Two -->
-                            <div class="feature-block-two col-lg-6 col-md-6 col-sm-12">
-                                <div class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
-                                    <div class="icon-box">
-                                        <span class="icon flaticon-pound"></span>
-                                    </div>
-                                    <h3><a href="javascript:void();">The Future</h3>
-                                    <p class="feature-text"> A monumental debate on the Africa of the future by African
-                                        leaders.</p>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                 </div>
-
-                <!-- Video Column -->
-                <div class="video-column col-lg-5 col-md-12 col-sm-12">
-                    <div class="inner-column wow slideInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        <div class="image">
-                            <img src="{{ asset('assets/images/resource/image.png') }}" alt="" />
-                        </div>
-                        <div class="video-outer">
-                            <a href="{{ asset('assets/images/resource/image.png') }}"
-                                class="lightbox-image video-boxed"><span class="flaticon-play-button"></span></a>
+                <div class="swiper-slide">
+                    <div class="exvent-hero-section-05" style="background-image: url(assets/images/bg/slider-bg-2.jpg);">
+                        <div class="container">
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-md-8 text-center">
+                                    <div class="hero-conent-wrapper">
+                                        <div class="top-title-date" data-aos="fade-down" data-aos-delay="500">
+                                            <span>Augest 20, 2024</span>
+                                        </div>
+                                        <div class="main-title" data-aos="fade-down" data-aos-delay="1000">
+                                            <h1>International Conference 2024</h1>
+                                        </div>
+                                        <ul class="hero-meta" data-aos="fade-right" data-aos-delay="1500">
+                                            <li class="meta-item">
+                                                <a href="pricing.html"><i class="fas fa-chair"></i> 3000 Seats</a>
+                                            </li>
+                                            <li class="meta-item">
+                                                <a href="speaker-01.html"><i class="fas fa-user"></i> 05 Speakers</a>
+                                            </li>
+                                            <li class="meta-item">
+                                                <a href="contact.html"><i class="fas fa-map-marker-alt"></i> Boston, Canada</a>
+                                            </li>
+                                        </ul>
+                                        <div class="hero-btn" data-aos="fade-up" data-aos-delay="2000">
+                                            <div class="row justify-content-center">
+                                                <div class="col-lg-3 col-sm-4 col-6">
+                                                    <button class="btn-5">Book Now</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="swiper-slide">
+                    <div class="exvent-hero-section-05" style="background-image: url(assets/images/bg/hero_bg2.jpg);">
+                        <div class="container">
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-md-8 text-center">
+                                    <div class="hero-conent-wrapper">
+                                        <div class="top-title-date" data-aos="fade-down" data-aos-delay="500">
+                                            <span>September 20, 2025</span>
+                                        </div>
+                                        <div class="main-title" data-aos="fade-down" data-aos-delay="1000">
+                                            <h1>World Business Conferences 2025</h1>
+                                        </div>
+                                        <ul class="hero-meta" data-aos="fade-right" data-aos-delay="1500">
+                                            <li class="meta-item">
+                                                <a href="pricing.html"><i class="fas fa-chair"></i> 1000 Seats</a>
+                                            </li>
+                                            <li class="meta-item">
+                                                <a href="speaker-01.html"><i class="fas fa-user"></i> 15 Speakers</a>
+                                            </li>
+                                            <li class="meta-item">
+                                                <a href="contact.html"><i class="fas fa-map-marker-alt"></i> Boston, Canada</a>
+                                            </li>
+                                        </ul>
+                                        <div class="hero-btn" data-aos="fade-up" data-aos-delay="2000">
+                                            <div class="row justify-content-center">
+                                                <div class="col-lg-3 col-sm-4 col-6">
+                                                    <button class="btn-5">Book Now</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <!-- Hero End -->
 
+        <!-- Countdown Start -->
+        <div class="event-countdown-5 section-padding-02 grey-bg">
+            <div class="container">
+                <div class="counter-wrapper">
+                    <div class="row gx-0 gy-5 align-items-center">
+                        <div class="col-lg-4 text-center">
+                            <div class="counter-content-left">
+                                <h4 class="counter-title">Event Starting</h4>
+                                <span class="counter-subtitle">Time Remaining</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 text-center">
+                            <!-- Countdown Start -->
+                            <div class="exvent-countdown-inner-5 countdown" data-countdown="2023/9/24" data-format="short">
+                                <div class="single-countdown">
+                                    <span class="count countdown__time daysLeft"></span>
+                                    <span class="value countdown__time daysText"></span>
+                                </div>
+                                <div class="single-countdown countdown-2">
+                                    <span class="count countdown__time hoursLeft"></span>
+                                    <span class="value countdown__time hoursText"></span>
+                                </div>
+                                <div class="single-countdown countdown-3">
+                                    <span class="count countdown__time minsLeft"></span>
+                                    <span class="value countdown__time minsText"></span>
+                                </div>
+                                <div class="single-countdown countdown-4">
+                                    <span class="count countdown__time secsLeft"></span>
+                                    <span class="value countdown__time secsText"></span>
+                                </div>
+                            </div>
+                            <!-- Countdown End -->
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
-    <!-- End Market Section -->
+        <!-- Countdown End -->
 
-    <!-- Speaker Section Two -->
-    <section class="speaker-section-two">
-        <!-- Section Icons -->
-        <div class="section-icons parallax-scene-2">
-            <!-- Icon One -->
-            <div class="icon icon-one parallax-layer" data-depth="0.20"><img
-                    src="{{ asset('assets/images/icons/icon-14.png') }}" alt="" /></div>
-            <!-- Icon Two -->
-            <div class="icon icon-two parallax-layer" data-depth="-0.40"><img
-                    src="{{ asset('assets/images/icons/icon-15.png') }}" alt="" /></div>
-        </div>
-        <div class="auto-container">
-            <div class="row clearfix">
 
-                <!-- Title Column -->
-                <div class="title-column col-lg-6 col-md-12 col-sm-12">
-                    <div class="inner-column">
-                        <!-- Sec Title -->
-                        <div class="sec-title">
-                            <div class="title">Chairs Of NBA Conference 63rd Edition(2023)</div>
-                            <div class="separator"></div>
+        <!-- Event Counter Start -->
+        <div class="event-counter-section section-padding grey-bg">
+            <img src="assets/images/shape/counter_shape1.png" alt="shape1" class="conter-shape1">
+            <img src="assets/images/shape/counter_shape2.png" alt="shape2" class="conter-shape2">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-12">
+                        <div class="section-title">
+                            <h5 class="sub-title">Join This Event</h5>
+                            <h2 class="title">Fuel your curiosity, find inspiration
+                                and discuss</h2>
                         </div>
-                        <div class="text">Greetings! And welcome to the conference website for the 63rd Annual General
-                            Conference of the NBA, holding in our capital city, Abuja from the 25th of August to the 1st of
-                            September 2023. We are honoured at the privilege of leading eminent colleagues from across the
-                            branches, to plan and deliver what we hope will be another excellent gathering.
-
-                            As you are undoubtedly aware, the Annual General Conference (AGC) is the leading annual event of
-                            the NBA and a staple on the calendar of the Nigerian legal profession. Each year, we come
-                            together to discuss, debate and learn; constantly seeking new ways to improve the practice of
-                            our profession, how we service our clients, and the way our society is governed and regulated.
+                    </div>
+                    <div class="col-lg-7 col-12">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-md-4 col-8">
+                                <div class="counter-item">
+                                    <h1 class="counter-numb counter color1">120</h1>
+                                    <span>Attendence</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-8">
+                                <div class="counter-item">
+                                    <h1 class="counter-numb counter color2">05</h1>
+                                    <span>Workshop</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-8">
+                                <div class="counter-item">
+                                    <h1 class="counter-numb counter color3">03</h1>
+                                    <span>Days</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <!-- Event Counter End -->
 
-                <!-- Speaker Block -->
-                <div class="speaker-block-two col-lg-3 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="dots-one"></div>
-                        <div class="dots-two"></div>
-                        <div class="image">
-                            <img src="{{ cloudinary_url('nbaconference/bg/mazi_afam_osigwe_new', ['width' => 300]) }}"
-                                alt="" />
-                            <ul class="social-box">
-                                <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                <li><a href="#"><span class="fab fa-behance"></span></a></li>
-                                <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                                <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
+
+        <!-- About Area Start -->
+        <div class="about-section section-padding-03">
+            <div class="container">
+                <div class="row g-0">
+                    <div class="col-lg-5 order-lg-1 order-2">
+                        <div class="about-thumb-wrap">
+                            <img src="assets/images/about_img1.jpg" alt="about_img1">
+                            <img src="{{ cloudinary_url('imt/background/bike') }}" alt="about_img2">
+                        </div>
+                    </div>
+                    <div class="col-lg-7 order-lg-1 order-1">
+                        <div class="about-content-wrap">
+                            <img src="assets/images/shape/about_content_shape1.png" alt="shape" class="about-box-shape">
+                            <img src="assets/images/shape/about_shape1.png" alt="shape x" class="about-shape-x">
+                            <div class="section-title">
+                                <h5 class="sub-title">An event for</h5>
+                                <h2 class="title">Get curious. Be inspired. Create your future.</h2>
+                            </div>
+                            <div class="section-paragraph">
+                                <p>We’re inviting the top creatives in the tech industry from all over the world to come learn, grow, scrape their knees, try new things, to be vulnerable, and to have epic adventures</p>
+                                <p>Grow, scrape their knees, try new things, to be vulnerable, and to have epic adventures together, this time both </p>
+                            </div>
+                            <div class="about-btn">
+                                <a class="btn" href="pricing.html">Contact for booking</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About Area End -->
+
+        <!-- Speaker Area Start -->
+        <div class="speaker-section section-padding-top">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title text-center">
+                            <h5 class="sub-title">Speakers</h5>
+                            <h2 class="title white">Iconic industry-leading speakers</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-0 justify-content-center">
+                    <div class="col-lg-3 col-sm-6 ">
+                        <a class="speaker-link" href="speaker-single.html">
+                            <div class="single-speaker">
+                                <div class="speaker-thumb">
+                                    <img src="assets/images/speaker/speaker_1.jpg" alt="Speaker">
+                                </div>
+                                <div class="speaker-content">
+                                    <h4>Mike Fermalin</h4>
+                                    <span>Career Expert</span>
+                                </div>
+                                <div class="speaker-shape">
+                                    <img src="assets/images/shape/speaker_shape1.png" alt="">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 ">
+                        <a class="speaker-link" href="speaker-single.html">
+                            <div class="single-speaker">
+                                <div class="speaker-thumb">
+                                    <img src="assets/images/speaker/speaker_2.jpg" alt="Speaker">
+                                </div>
+                                <div class="speaker-content">
+                                    <h4>Anna Blair</h4>
+                                    <span>Founder, Marks</span>
+                                </div>
+                                <div class="speaker-shape">
+                                    <img src="assets/images/shape/speaker_shape1.png" alt="">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 ">
+                        <a class="speaker-link" href="speaker-single.html">
+                            <div class="single-speaker">
+                                <div class="speaker-thumb">
+                                    <img src="assets/images/speaker/speaker_3.jpg" alt="Speaker">
+                                </div>
+                                <div class="speaker-content">
+                                    <h4>Trevor J. Bell</h4>
+                                    <span>Lead Trainer, Blids</span>
+                                </div>
+                                <div class="speaker-shape">
+                                    <img src="assets/images/shape/speaker_shape1.png" alt="">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 ">
+                        <a class="speaker-link" href="speaker-single.html">
+                            <div class="single-speaker">
+                                <div class="speaker-thumb">
+                                    <img src="assets/images/speaker/speaker_4.jpg" alt="Speaker">
+                                </div>
+                                <div class="speaker-content">
+                                    <h4>Michael Rooker</h4>
+                                    <span>Developer Expert</span>
+                                </div>
+                                <div class="speaker-shape">
+                                    <img src="assets/images/shape/speaker_shape1.png" alt="">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 ">
+                        <a class="speaker-link" href="speaker-single.html">
+                            <div class="single-speaker">
+                                <div class="speaker-thumb">
+                                    <img src="assets/images/speaker/speaker_5.jpg" alt="Speaker">
+                                </div>
+                                <div class="speaker-content">
+                                    <h4>David B. Perez</h4>
+                                    <span>Founder, Madis</span>
+                                </div>
+                                <div class="speaker-shape">
+                                    <img src="assets/images/shape/speaker_shape1.png" alt="">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 ">
+                        <a class="speaker-link" href="speaker-single.html">
+                            <div class="single-speaker">
+                                <div class="speaker-thumb">
+                                    <img src="assets/images/speaker/speaker_6.jpg" alt="Speaker">
+                                </div>
+                                <div class="speaker-content">
+                                    <h4>Agustin Todaro</h4>
+                                    <span>Founder, Nickho</span>
+                                </div>
+                                <div class="speaker-shape">
+                                    <img src="assets/images/shape/speaker_shape1.png" alt="">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 ">
+                        <a class="speaker-link" href="speaker-single.html">
+                            <div class="single-speaker">
+                                <div class="speaker-thumb">
+                                    <img src="assets/images/speaker/speaker_7.jpg" alt="Speaker">
+                                </div>
+                                <div class="speaker-content">
+                                    <h4>Trisha Fisher</h4>
+                                    <span>President, Child Care</span>
+                                </div>
+                                <div class="speaker-shape">
+                                    <img src="assets/images/shape/speaker_shape1.png" alt="">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 ">
+                        <a class="speaker-link" href="speaker-single.html">
+                            <div class="single-speaker">
+                                <div class="speaker-thumb">
+                                    <img src="assets/images/speaker/speaker_8.jpg" alt="Speaker">
+                                </div>
+                                <div class="speaker-content">
+                                    <h4>Jon P. Monroe</h4>
+                                    <span>Traveller</span>
+                                </div>
+                                <div class="speaker-shape">
+                                    <img src="assets/images/shape/speaker_shape1.png" alt="">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Speaker Area End -->
+
+        <!-- Schedule Area Start -->
+        <div class="schedule-area section-padding-02 grey-bg">
+            <img src="assets/images/shape/schedule_shape1.png" class="schedule-shape1" alt="Shape1">
+            <img src="assets/images/shape/schedule_shape2.png" class="schedule-shape2" alt="Shape2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title-wrap">
+                            <div class="section-title text-center">
+                                <h5 class="sub-title">Schedule</h5>
+                                <h2 class="title">Without waiting for you to catch up</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-0 align-items-start">
+                    <div class="col-2 sticky-col">
+                        <div class="schedule-side-nav">
+                            <div class="nav d-block nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                <p class="nav-link active" id="day-1-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">1st Day</p>
+                                <p class="nav-link" id="day-2-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">2nd Day</p>
+                                <p class="nav-link" id="day-3-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">3rd Day</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <div class="tab-content" id="v-pills-tabContent">
+                            <div class="tab-pane show active" id="v-pills-home" role="tabpanel">
+                                <div class="schedule-wrapper">
+                                    <div class="single-schedule">
+                                        <div class="row g-0 align-items-center shedule-row">
+                                            <div class="col-lg-3 col-12">
+                                                <div class="schedule-thumbnail">
+                                                    <div class="schedule-time">
+                                                        <h3 class="time">12</h3>
+                                                        <div class="month-time">
+                                                            <span class="month">August</span>
+                                                            <span class="duration-event">09:00 - 11:00 AM</span>
+                                                        </div>
+                                                    </div>
+                                                    <img src="assets/images/thumbnails/schedule_thumb1.png" alt="Thumbnail" class="schedule-thumb-img">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-9 col-12">
+                                                <div class="schedule-content-wrap">
+                                                    <div class="schedule-content">
+                                                        <div class="schedule-location">
+                                                            <p><span><i class="fas fa-map-marker-alt"></i> </span>Monthon city hall, New York</p>
+                                                        </div>
+                                                        <h4 class="schedule-title">Registration for opening workshop </h4>
+                                                        <div class="schedule-descrip">
+                                                            <p>We’re inviting the top creatives in the tech industry from all over the world to come learn, grow, scrape their knees, try new things, to be vulnerable, </p>
+                                                            <p class="collapse hidden-desc show" id="collapseContent1">epic adventures Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache fanny pack nostrud. Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse flexitarian Truffaut synth art party deep v chillwave. </p>
+                                                        </div>
+                                                    </div>
+                                                    <a class="minus-btn" data-bs-toggle="collapse" href="#collapseContent1" role="button" aria-expanded="false" aria-controls="collapseContent1">
+                                                        <div class="plus-icon-1 active">
+                                                            <div class="plus-icon-shape active-plus"></div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row g-0 align-items-center shedule-row">
+                                            <div class="col-lg-3 col-12">
+                                                <div class="schedule-thumbnail">
+                                                    <div class="schedule-time">
+                                                        <h3 class="time">12</h3>
+                                                        <div class="month-time">
+                                                            <span class="month">August</span>
+                                                            <span class="duration-event">12:30 - 02:00 PM</span>
+                                                        </div>
+                                                    </div>
+                                                    <img src="assets/images/thumbnails/schedule_thumb2.png" alt="Thumbnail" class="schedule-thumb-img">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-9 col-12">
+                                                <div class="schedule-content-wrap">
+                                                    <div class="schedule-content">
+                                                        <div class="schedule-location">
+                                                            <p><span><i class="fas fa-map-marker-alt"></i> </span>Monthon city hall, New York</p>
+                                                        </div>
+                                                        <h4 class="schedule-title">Meeting with world class investors </h4>
+                                                        <div class="schedule-descrip">
+                                                            <p>We’re inviting the top creatives in the tech industry from all over the world to come learn, grow, scrape their knees, try new things, to be vulnerable, </p>
+                                                            <p class="collapse hidden-desc" id="collapseContent2">epic adventures Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache fanny pack nostrud. Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse flexitarian Truffaut synth art party deep v chillwave. </p>
+                                                        </div>
+                                                    </div>
+                                                    <a class="minus-btn" data-bs-toggle="collapse" href="#collapseContent2" role="button" aria-expanded="false" aria-controls="collapseContent2">
+                                                        <div class="plus-icon-2">
+                                                            <div class="plus-icon-shape"></div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row g-0 align-items-center shedule-row">
+                                            <div class="col-lg-3 col-12">
+                                                <div class="schedule-thumbnail">
+                                                    <div class="schedule-time">
+                                                        <h3 class="time">12</h3>
+                                                        <div class="month-time">
+                                                            <span class="month">August</span>
+                                                            <span class="duration-event">02:30 - 05:30 PM</span>
+                                                        </div>
+                                                    </div>
+                                                    <img src="assets/images/thumbnails/schedule_thumb3.png" alt="Thumbnail" class="schedule-thumb-img">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-9 col-12">
+                                                <div class="schedule-content-wrap">
+                                                    <div class="schedule-content">
+                                                        <div class="schedule-location">
+                                                            <p><span><i class="fas fa-map-marker-alt"></i> </span>Monthon city hall, New York</p>
+                                                        </div>
+                                                        <h4 class="schedule-title">Discussion about benefits of online meetings </h4>
+                                                        <div class="schedule-descrip">
+                                                            <p>We’re inviting the top creatives in the tech industry from all over the world to come learn, grow, scrape their knees, try new things, to be vulnerable, </p>
+                                                            <p class="collapse hidden-desc" id="collapseContent3">epic adventures Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache fanny pack nostrud. Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse flexitarian Truffaut synth art party deep v chillwave. </p>
+                                                        </div>
+                                                    </div>
+                                                    <a class="minus-btn" data-bs-toggle="collapse" href="#collapseContent3" role="button" aria-expanded="false" aria-controls="collapseContent3">
+                                                        <div class="plus-icon-3">
+                                                            <div class="plus-icon-shape"></div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="v-pills-profile" role="tabpanel">
+                                <div class="schedule-wrapper">
+                                    <div class="single-schedule">
+                                        <div class="row g-0 align-items-center shedule-row">
+                                            <div class="col-lg-3 col-12">
+                                                <div class="schedule-thumbnail">
+                                                    <div class="schedule-time">
+                                                        <h3 class="time">13</h3>
+                                                        <div class="month-time">
+                                                            <span class="month">August</span>
+                                                            <span class="duration-event">09:00 - 11:00 AM</span>
+                                                        </div>
+                                                    </div>
+                                                    <img src="assets/images/thumbnails/schedule_thumb1.png" alt="Thumbnail" class="schedule-thumb-img">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-9 col-12">
+                                                <div class="schedule-content-wrap">
+                                                    <div class="schedule-content">
+                                                        <div class="schedule-location">
+                                                            <p><span><i class="fas fa-map-marker-alt"></i> </span>Monthon city hall, New York</p>
+                                                        </div>
+                                                        <h4 class="schedule-title">Discussion about the benefit of group work</h4>
+                                                        <div class="schedule-descrip">
+                                                            <p>We’re inviting the top creatives in the tech industry from all over the world to come learn, grow, scrape their knees, try new things, to be vulnerable, </p>
+                                                            <p class="collapse hidden-desc show" id="collapseContent4">epic adventures Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache fanny pack nostrud. Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse flexitarian Truffaut synth art party deep v chillwave. </p>
+                                                        </div>
+                                                    </div>
+                                                    <a class="minus-btn" data-bs-toggle="collapse" href="#collapseContent4" role="button" aria-expanded="false" aria-controls="collapseContent4">
+                                                        <div class="plus-icon-1 active">
+                                                            <div class="plus-icon-shape active-plus"></div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row g-0 align-items-center shedule-row">
+                                            <div class="col-lg-3 col-12">
+                                                <div class="schedule-thumbnail">
+                                                    <div class="schedule-time">
+                                                        <h3 class="time">13</h3>
+                                                        <div class="month-time">
+                                                            <span class="month">August</span>
+                                                            <span class="duration-event">12:30 - 02:00 PM</span>
+                                                        </div>
+                                                    </div>
+                                                    <img src="assets/images/thumbnails/schedule_thumb2.png" alt="Thumbnail" class="schedule-thumb-img">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-9 col-12">
+                                                <div class="schedule-content-wrap">
+                                                    <div class="schedule-content">
+                                                        <div class="schedule-location">
+                                                            <p><span><i class="fas fa-map-marker-alt"></i> </span>Monthon city hall, New York</p>
+                                                        </div>
+                                                        <h4 class="schedule-title">Meeting With worldclass creators</h4>
+                                                        <div class="schedule-descrip">
+                                                            <p>We’re inviting the top creatives in the tech industry from all over the world to come learn, grow, scrape their knees, try new things, to be vulnerable, </p>
+                                                            <p class="collapse hidden-desc" id="collapseContent5">epic adventures Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache fanny pack nostrud. Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse flexitarian Truffaut synth art party deep v chillwave. </p>
+                                                        </div>
+                                                    </div>
+                                                    <a class="minus-btn" data-bs-toggle="collapse" href="#collapseContent5" role="button" aria-expanded="false" aria-controls="collapseContent5">
+                                                        <div class="plus-icon-2">
+                                                            <div class="plus-icon-shape"></div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row g-0 align-items-center shedule-row">
+                                            <div class="col-lg-3 col-12">
+                                                <div class="schedule-thumbnail">
+                                                    <div class="schedule-time">
+                                                        <h3 class="time">13</h3>
+                                                        <div class="month-time">
+                                                            <span class="month">August</span>
+                                                            <span class="duration-event">02:30 - 05:30 PM</span>
+                                                        </div>
+                                                    </div>
+                                                    <img src="assets/images/thumbnails/schedule_thumb3.png" alt="Thumbnail" class="schedule-thumb-img">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-9 col-12">
+                                                <div class="schedule-content-wrap">
+                                                    <div class="schedule-content">
+                                                        <div class="schedule-location">
+                                                            <p><span><i class="fas fa-map-marker-alt"></i> </span>Monthon city hall, New York</p>
+                                                        </div>
+                                                        <h4 class="schedule-title">A documentary film about success</h4>
+                                                        <div class="schedule-descrip">
+                                                            <p>We’re inviting the top creatives in the tech industry from all over the world to come learn, grow, scrape their knees, try new things, to be vulnerable, </p>
+                                                            <p class="collapse hidden-desc" id="collapseContent6">epic adventures Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache fanny pack nostrud. Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse flexitarian Truffaut synth art party deep v chillwave. </p>
+                                                        </div>
+                                                    </div>
+                                                    <a class="minus-btn" data-bs-toggle="collapse" href="#collapseContent6" role="button" aria-expanded="false" aria-controls="collapseContent6">
+                                                        <div class="plus-icon-3">
+                                                            <div class="plus-icon-shape"></div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="v-pills-messages" role="tabpanel">
+                                <div class="schedule-wrapper">
+                                    <div class="single-schedule">
+                                        <div class="row g-0 align-items-center shedule-row">
+                                            <div class="col-md-3 col-12">
+                                                <div class="schedule-thumbnail">
+                                                    <div class="schedule-time">
+                                                        <h3 class="time">14</h3>
+                                                        <div class="month-time">
+                                                            <span class="month">August</span>
+                                                            <span class="duration-event">09:00 - 11:00 AM</span>
+                                                        </div>
+                                                    </div>
+                                                    <img src="assets/images/thumbnails/schedule_thumb1.png" alt="Thumbnail" class="schedule-thumb-img">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9 col-12">
+                                                <div class="schedule-content-wrap">
+                                                    <div class="schedule-content">
+                                                        <div class="schedule-location">
+                                                            <p><span><i class="fas fa-map-marker-alt"></i> </span>Monthon city hall, New York</p>
+                                                        </div>
+                                                        <h4 class="schedule-title">Discussion about why you learn international language </h4>
+                                                        <div class="schedule-descrip">
+                                                            <p>We’re inviting the top creatives in the tech industry from all over the world to come learn, grow, scrape their knees, try new things, to be vulnerable, </p>
+                                                            <p class="collapse hidden-desc show" id="collapseContent7">epic adventures Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache fanny pack nostrud. Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse flexitarian Truffaut synth art party deep v chillwave. </p>
+                                                        </div>
+                                                    </div>
+                                                    <a class="minus-btn" data-bs-toggle="collapse" href="#collapseContent7" role="button" aria-expanded="false" aria-controls="collapseContent7">
+                                                        <div class="plus-icon-1 active">
+                                                            <div class="plus-icon-shape active-plus"></div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row g-0 align-items-center shedule-row">
+                                            <div class="col-md-3 col-12">
+                                                <div class="schedule-thumbnail">
+                                                    <div class="schedule-time">
+                                                        <h3 class="time">14</h3>
+                                                        <div class="month-time">
+                                                            <span class="month">August</span>
+                                                            <span class="duration-event">12:30 - 02:00 PM</span>
+                                                        </div>
+                                                    </div>
+                                                    <img src="assets/images/thumbnails/schedule_thumb2.png" alt="Thumbnail" class="schedule-thumb-img">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9 col-12">
+                                                <div class="schedule-content-wrap">
+                                                    <div class="schedule-content">
+                                                        <div class="schedule-location">
+                                                            <p><span><i class="fas fa-map-marker-alt"></i> </span>Monthon city hall, New York</p>
+                                                        </div>
+                                                        <h4 class="schedule-title">A task for the entire event and Q&A</h4>
+                                                        <div class="schedule-descrip">
+                                                            <p>We’re inviting the top creatives in the tech industry from all over the world to come learn, grow, scrape their knees, try new things, to be vulnerable, </p>
+                                                            <p class="collapse hidden-desc" id="collapseContent8">epic adventures Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache fanny pack nostrud. Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse flexitarian Truffaut synth art party deep v chillwave. </p>
+                                                        </div>
+                                                    </div>
+                                                    <a class="minus-btn" data-bs-toggle="collapse" href="#collapseContent8" role="button" aria-expanded="false" aria-controls="collapseContent8">
+                                                        <div class="plus-icon-2">
+                                                            <div class="plus-icon-shape"></div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row g-0 align-items-center shedule-row">
+                                            <div class="col-md-3 col-12">
+                                                <div class="schedule-thumbnail">
+                                                    <div class="schedule-time">
+                                                        <h3 class="time">14</h3>
+                                                        <div class="month-time">
+                                                            <span class="month">August</span>
+                                                            <span class="duration-event">02:30 - 5:00 PM</span>
+                                                        </div>
+                                                    </div>
+                                                    <img src="assets/images/thumbnails/schedule_thumb3.png" alt="Thumbnail" class="schedule-thumb-img">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9 col-12">
+                                                <div class="schedule-content-wrap">
+                                                    <div class="schedule-content">
+                                                        <div class="schedule-location">
+                                                            <p><span><i class="fas fa-map-marker-alt"></i> </span>Monthon city hall, New York</p>
+                                                        </div>
+                                                        <h4 class="schedule-title">Prize Giving and Closing Ceremony </h4>
+                                                        <div class="schedule-descrip">
+                                                            <p>We’re inviting the top creatives in the tech industry from all over the world to come learn, grow, scrape their knees, try new things, to be vulnerable, </p>
+                                                            <p class="collapse hidden-desc" id="collapseContent9">epic adventures Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache fanny pack nostrud. Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse flexitarian Truffaut synth art party deep v chillwave. </p>
+                                                        </div>
+                                                    </div>
+                                                    <a class="minus-btn" data-bs-toggle="collapse" href="#collapseContent9" role="button" aria-expanded="false" aria-controls="collapseContent9">
+                                                        <div class="plus-icon-3">
+                                                            <div class="plus-icon-shape"></div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Schedule Area End -->
+
+        <!-- Pricing Area Start -->
+        <div class="pricing-area section-padding-04" style="background-image: url(assets/images/bg/price_bg.jpg);">
+            <div class="pricing-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="section-title-wrap">
+                                <div class="section-title text-center">
+                                    <h5 class="sub-title">Event Pricing</h5>
+                                    <h2 class="title white">Book your seat now</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 col-sm-7">
+                            <div class="price-card text-center">
+                                <div class="price-header">
+                                    <span class="price-plan">Basic Pass</span>
+                                    <h3 class="price-ammount"><sup>$</sup>43</h3>
+                                </div>
+                                <div class="price-body">
+                                    <ul class="price-desc">
+                                        <li>Back Row Seat</li>
+                                        <li>Free Lunch & Snacks</li>
+                                        <li>Event Certificate</li>
+                                        <li>1 Workshop</li>
+                                    </ul>
+                                </div>
+                                <div class="price-footer">
+                                    <a href="pricing.html" class="btn price-btn btn-blue"> Book a seat</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-7">
+                            <div class="price-card text-center">
+                                <div class="price-header pink-bg">
+                                    <span class="price-plan">Premium Pass</span>
+                                    <h3 class="price-ammount"><sup>$</sup>143</h3>
+                                </div>
+                                <div class="price-body">
+                                    <ul class="price-desc">
+                                        <li>Back Row Seat</li>
+                                        <li>Free Lunch & Snacks</li>
+                                        <li>Event Certificate</li>
+                                        <li>1 Workshop</li>
+                                    </ul>
+                                </div>
+                                <div class="price-footer">
+                                    <a href="pricing.html" class="btn price-btn"> Book a seat</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-7">
+                            <div class="price-card text-center">
+                                <div class="price-header yellow-bg">
+                                    <span class="price-plan">Platinam Pass</span>
+                                    <h3 class="price-ammount"><sup>$</sup>243</h3>
+                                </div>
+                                <div class="price-body">
+                                    <ul class="price-desc">
+                                        <li>Back Row Seat</li>
+                                        <li>Free Lunch & Snacks</li>
+                                        <li>Event Certificate</li>
+                                        <li>1 Workshop</li>
+                                    </ul>
+                                </div>
+                                <div class="price-footer">
+                                    <a href="pricing.html" class="btn price-btn btn-yellow"> Book a seat</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Pricing Area End -->
+
+        <!-- Brand Area Start -->
+        <div class="brand-area section-padding-05">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title-wrap">
+                            <div class="section-title text-center">
+                                <h5 class="sub-title">Sponsors</h5>
+                                <h2 class="title">50+ leading companies with us</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center text-center">
+                    <div class="col-md-3 col-6">
+                        <div class="brand-item">
+                            <a href="blog-details.html"><img src="assets/images/logo/brand1.png" alt="Brand"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="brand-item">
+                            <a href="blog-details.html"><img src="assets/images/logo/brand2.png" alt="Brand"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="brand-item">
+                            <a href="blog-details.html"><img src="assets/images/logo/brand3.png" alt="Brand"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="brand-item">
+                            <a href="blog-details.html"><img src="assets/images/logo/brand4.png" alt="Brand"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="brand-item">
+                            <a href="blog-details.html"><img src="assets/images/logo/brand5.png" alt="Brand"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="brand-item">
+                            <a href="blog-details.html"><img src="assets/images/logo/brand6.png" alt="Brand"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="brand-item">
+                            <a href="blog-details.html"><img src="assets/images/logo/brand7.png" alt="Brand"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="brand-item">
+                            <a href="blog-details.html"><img src="assets/images/logo/brand8.png" alt="Brand"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Brand Area End -->
+
+        <!-- Past Event Gallery Area Start -->
+        <div class="past-event-gallery-area section-padding-06 grey-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title-wrap">
+                            <div class="section-title text-center">
+                                <h5 class="sub-title">Previous Gallery</h5>
+                                <h2 class="title">Past event memories</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-0">
+                    <div class="col-md-3 col-sm-6">
+                        <a href="event-list.html" class="single-gallery">
+                            <img src="assets/images/gallery1.jpg" alt="gallery">
+                            <div class="gallery-content">
+                                <span>Aug</span>
+                                <h5>2018</h5>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <a href="event-list.html" class="single-gallery">
+                            <img src="assets/images/gallery2.jpg" alt="gallery">
+                            <div class="gallery-content">
+                                <span>Jun</span>
+                                <h5>2019</h5>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <a href="event-list.html" class="single-gallery">
+                            <img src="assets/images/gallery3.jpg" alt="gallery">
+                            <div class="gallery-content">
+                                <span>Sep</span>
+                                <h5>2020</h5>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <a href="event-list.html" class="single-gallery">
+                            <img src="assets/images/gallery4.jpg" alt="gallery">
+                            <div class="gallery-content">
+                                <span>May</span>
+                                <h5>2021</h5>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Past Event Gallery Area End -->
+
+        <!-- Footer Section Start -->
+        <div class="footer-section" style="background-image: url(assets/images/bg/footer_bg1.jpg);">
+            <div class="container">
+                <div class="footer-newsletter">
+                    <div class="row">
+                        <div class="col-lg-5 col-12 text-sm-start text-center">
+                            <div class="footer-title">
+                                <span>Subscribe Newsletter</span>
+                                <h4>Subscribe to recieve
+                                    daily news</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-12">
+                            <div class="footer-newsletter-form">
+                                <form action="#">
+                                    <input type="text" placeholder="Your Email">
+                                    <button class="btn btn-primary">Subscribe</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-widget-social">
+                <div class="container">
+                    <div class="row text-center">
+                        <div class="col-12">
+                            <div class="social-title">
+                                <h4 class="title">Contact With us</h4>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <ul class="social-list">
+                                <li><a href="www.facebook.html"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="www.twitter.html"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="www.dribbble.html"><i class="fab fa-dribbble"></i></a></li>
+                                <li><a href="www.behance.html"><i class="fab fa-behance"></i></a></li>
                             </ul>
                         </div>
-                        <div class="lower-content">
-                            <h3><a href="#popup_2" class="ts-image-popup">Mazi Afam Osigwe, SAN</a></h3>
-                            <div class="designation">Chair, NBA AGCPC 2023</div>
-                        </div>
-
-                        <div id="popup_2" class="popup-content ts-speaker-popup mfp-hide">
-
-                            <div class="row clearfix">
-
-                                <!-- Image Column -->
-                                <div class="image-column col-lg-5 col-md-5 col-sm-12">
-                                    <div class="inner-column">
-                                        <div class="image">
-                                            <img src="{{ cloudinary_url('nbaconference/bg/mazi_afam_osigwe', ['width' => 300]) }}"
-                                                alt="">
-                                            <ul class="social-box">
-                                                <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                                <li><a href="#"><span class="fab fa-behance"></span></a></li>
-                                                <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                                                <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                                            </ul>
-                                        </div>
-
-                                        <!--Skills-->
-                                        {{-- <div class="skills">
-
-                                            <!--Skill Item-->
-                                            <div class="skill-item">
-                                                <div class="skill-header clearfix">
-                                                    <div class="skill-title">Digital Marketing</div>
-                                                    <div class="skill-percentage">
-                                                        <div class="count-box"><span class="count-text" data-speed="2000"
-                                                                data-stop="85">0</span>%</div>
-                                                    </div>
-                                                </div>
-                                                <div class="skill-bar">
-                                                    <div class="bar-inner">
-                                                        <div class="bar progress-line" data-width="85"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!--Skill Item-->
-                                            <div class="skill-item">
-                                                <div class="skill-header clearfix">
-                                                    <div class="skill-title">Strategy Planning</div>
-                                                    <div class="skill-percentage">
-                                                        <div class="count-box"><span class="count-text" data-speed="2000"
-                                                                data-stop="70">0</span>%</div>
-                                                    </div>
-                                                </div>
-                                                <div class="skill-bar">
-                                                    <div class="bar-inner">
-                                                        <div class="bar progress-line" data-width="70"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!--Skill Item-->
-                                            <div class="skill-item">
-                                                <div class="skill-header clearfix">
-                                                    <div class="skill-title">Startup Ideas</div>
-                                                    <div class="skill-percentage">
-                                                        <div class="count-box"><span class="count-text" data-speed="2000"
-                                                                data-stop="95">0</span>%</div>
-                                                    </div>
-                                                </div>
-                                                <div class="skill-bar">
-                                                    <div class="bar-inner">
-                                                        <div class="bar progress-line" data-width="95"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div> --}}
-
-                                    </div>
-                                </div>
-
-                                <!-- Content Column -->
-                                <div class="content-column col-lg-7 col-md-7 col-sm-12">
-                                    <div class="inner-column">
-                                        <h3>Mazi Afam Osigwe, SAN</h3>
-                                        <span class="speakder-designation">Chair, NBA AGCPC 2023</span>
-                                        <div class="text">Greetings! And welcome to the conference website for the 63rd
-                                            Annual General Conference of the NBA, holding in our capital city, Abuja from
-                                            the 25th of August to the 1st of September 2023. We are honoured at the
-                                            privilege of leading eminent colleagues from across the branches, to plan and
-                                            deliver what we hope will be another excellent gathering.
-
-                                            As you are undoubtedly aware, the Annual General Conference (AGC) is the leading
-                                            annual event of the NBA and a staple on the calendar of the Nigerian legal
-                                            profession. Each year, we come together to discuss, debate and learn; constantly
-                                            seeking new ways to improve the practice of our profession, how we service our
-                                            clients, and the way our society is governed and regulated.
-
-                                            The first quarter of this year saw the conduct of arguably the most contentious
-                                            election
-                                            cycle
-                                            in our recent history and the first since the passing of the amended Electoral
-                                            Act.
-                                            Lawyers have been front and centre of the pre and post-election activity that
-                                            has dominated
-                                            our national
-                                            discourse for the last several months and there will certainly be a lot to
-                                            examine at the
-                                            conference.
-                                            At the time of launching this website,
-                                            a President-elect is waiting to take over the reins of office; in-coming and
-                                            re-elected
-                                            Governors in States where elections were conducted are either waiting in the
-                                            wings or
-                                            planning
-                                            for the next four years, and members of national and State Houses of Assembly
-                                            are no less
-                                            keen to take office.
-                                            Members of civil society on the other hand, have never been more vocal about
-                                            their views on
-                                            governance and the elections;
-                                            the economy; the judiciary, amongst other institutions; national security; our
-                                            journey to
-                                            nationhood;
-                                            and their expectations from our leaders, all of which concern us as lawyers, as
-                                            members of
-                                            the
-                                            NBA -the leading watchdog of our society, and as collective and individual
-                                            promoters and
-                                            upholders of the rule of law.
-                                            What resonates across all religious, tribal, political and demographic
-                                            divides,
-                                            is the desire for good, purposeful leadership to bring us to the nation we have
-                                            the
-                                            potential to become.
-                                            Against this backdrop, the theme of this year’s conference:
-                                            “GETTING IT RIGHT – Charting the Course for Nigeria’s Nation Building”, is most
-                                            apposite.
-                                            It is a carefully thought-out theme that reflects our current realities.
-                                            We are on the cusp of a new Administration and demands are stringent for our
-                                            leaders to get
-                                            it right in all
-                                            areas of our national development. And the role of the legal profession in the
-                                            quest for
-                                            getting it right will be central
-                                            to discussions at the conference. the enviable reputation of being the largest
-                                            annual gathering of
-                                            lawyers anywhere in the world,
-                                            a whopping 20,000 delegates are expected to attend this year’s AGC. This number
-                                            has informed
-                                            the choice of the Moshood
-                                            Abiola National Stadium, Abuja as the venue for this year’s conference and we
-                                            daresay,
-                                            delegates will not be disappointed.
-                                            From the religious services to kick off the event, the golf and football
-                                            tournaments, the
-                                            health walks,
-                                            the plenary and breakout sessions, to the ever-vibrant Friendship Centre and
-                                            Mammy market,
-                                            the bustling Exhibition Hall,
-                                            the ‘Unbarred’ concert and the President’s Dinner, the Annual General Conference
-                                            has always
-                                            provided something for everyone,
-                                            and this year will be no exception!
-                                            The Conference Planning Committee (CPC) is single-minded in its
-                                            determination to successfully
-                                            deliver on the task entrusted to it. The launch of the website/conference portal
-                                            is our
-                                            first step towards
-                                            achieving that goal. On this website, delegates will be able to register, make
-                                            enquiries and
-                                            payments, and obtain
-                                            official information and regular updates about all aspects of the conference.
-                                            Potential
-                                            sponsors, exhibitors and
-                                            vendors will also find useful information here.
-                                            Once again, welcome to the conference planning portal of the NBA AGC
-                                            2023.
-                                            We look forward to personally welcoming you in August!
-                                        </div>
-                                        {{-- <ul class="speaker-list">
-                                            <li><span>Profession</span>Digital Marketing</li>
-                                            <li><span>Experience</span>8 Years</li>
-                                            <li><span>Email</span><a
-                                                    href="mailto:robert.gates@domain.com">robert.gates@domain.com</a></li>
-                                            <li><span>Phone</span><a href="tell:567-123-9008">567.123.9008</a></li>
-                                            <li><span>Company</span>MiExpo Business</li>
-                                            <li><span>Website</span><a href="#">www.miexpoconf.com</a></li>
-                                        </ul> --}}
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
                     </div>
                 </div>
-
-                <!-- Speaker Block -->
-                <div class="speaker-block-two col-lg-3 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="dots-one"></div>
-                        <div class="dots-two"></div>
-                        <div class="image">
-                            <img src="{{ cloudinary_url('nbaconference/bg/oyinkansola_badejo_okusanya', ['width' => 400]) }}"
-                                alt="" />
-                            <ul class="social-box">
-                                <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                <li><a href="#"><span class="fab fa-behance"></span></a></li>
-                                <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                                <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                            </ul>
-                        </div>
-                        <div class="lower-content">
-                            <h3><a href="#popup_8" class="ts-image-popup"> Oyinkansola Badejo-Okusanya, FCIArb</a></h3>
-                            <div class="designation">Alternate Chair, NBA AGCPC 2023</div>
-                        </div>
-
-                        <div id="popup_8" class="popup-content ts-speaker-popup mfp-hide">
-
-                            <div class="row clearfix">
-
-                                <!-- Image Column -->
-                                <div class="image-column col-lg-5 col-md-5 col-sm-12">
-                                    <div class="inner-column">
-                                        <div class="image">
-                                            <img src="{{ cloudinary_url('nbaconference/bg/oyinkansola_badejo_okusanya', ['width' => 400]) }}"
-                                                alt="">
-                                            <ul class="social-box">
-                                                <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                                <li><a href="#"><span class="fab fa-behance"></span></a></li>
-                                                <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                                                <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                                            </ul>
-                                        </div>
-
-                                        <!--Skills-->
-                                        {{-- <div class="skills">
-
-                                            <!--Skill Item-->
-                                            <div class="skill-item">
-                                                <div class="skill-header clearfix">
-                                                    <div class="skill-title">Digital Marketing</div>
-                                                    <div class="skill-percentage">
-                                                        <div class="count-box"><span class="count-text" data-speed="2000"
-                                                                data-stop="85">0</span>%</div>
-                                                    </div>
-                                                </div>
-                                                <div class="skill-bar">
-                                                    <div class="bar-inner">
-                                                        <div class="bar progress-line" data-width="85"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!--Skill Item-->
-                                            <div class="skill-item">
-                                                <div class="skill-header clearfix">
-                                                    <div class="skill-title">Strategy Planning</div>
-                                                    <div class="skill-percentage">
-                                                        <div class="count-box"><span class="count-text" data-speed="2000"
-                                                                data-stop="70">0</span>%</div>
-                                                    </div>
-                                                </div>
-                                                <div class="skill-bar">
-                                                    <div class="bar-inner">
-                                                        <div class="bar progress-line" data-width="70"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!--Skill Item-->
-                                            <div class="skill-item">
-                                                <div class="skill-header clearfix">
-                                                    <div class="skill-title">Startup Ideas</div>
-                                                    <div class="skill-percentage">
-                                                        <div class="count-box"><span class="count-text" data-speed="2000"
-                                                                data-stop="95">0</span>%</div>
-                                                    </div>
-                                                </div>
-                                                <div class="skill-bar">
-                                                    <div class="bar-inner">
-                                                        <div class="bar progress-line" data-width="95"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div> --}}
-
-                                    </div>
-                                </div>
-
-                                <!-- Content Column -->
-                                <div class="content-column col-lg-7 col-md-7 col-sm-12">
-                                    <div class="inner-column">
-                                        <h3>Oyinkansola Badejo-Okusanya, FCIArb</h3>
-                                        <span class="speakder-designation">Alternate Chair, NBA AGCPC 2023</span>
-                                        <div class="text">
-                                            <div class="text">Greetings! And welcome to the conference website for the
-                                                63rd
-                                                Annual General Conference of the NBA, holding in our capital city, Abuja
-                                                from
-                                                the 25th of August to the 1st of September 2023. We are honoured at the
-                                                privilege of leading eminent colleagues from across the branches, to plan
-                                                and
-                                                deliver what we hope will be another excellent gathering.
-
-                                                As you are undoubtedly aware, the Annual General Conference (AGC) is the
-                                                leading
-                                                annual event of the NBA and a staple on the calendar of the Nigerian legal
-                                                profession. Each year, we come together to discuss, debate and learn;
-                                                constantly
-                                                seeking new ways to improve the practice of our profession, how we service
-                                                our
-                                                clients, and the way our society is governed and regulated.
-
-                                                The first quarter of this year saw the conduct of arguably the most
-                                                contentious
-                                                election
-                                                cycle
-                                                in our recent history and the first since the passing of the amended
-                                                Electoral
-                                                Act.
-                                                Lawyers have been front and centre of the pre and post-election activity
-                                                that
-                                                has dominated
-                                                our national
-                                                discourse for the last several months and there will certainly be a lot to
-                                                examine at the
-                                                conference.
-                                                At the time of launching this website,
-                                                a President-elect is waiting to take over the reins of office; in-coming and
-                                                re-elected
-                                                Governors in States where elections were conducted are either waiting in the
-                                                wings or
-                                                planning
-                                                for the next four years, and members of national and State Houses of
-                                                Assembly
-                                                are no less
-                                                keen to take office.
-                                                Members of civil society on the other hand, have never been more vocal about
-                                                their views on
-                                                governance and the elections;
-                                                the economy; the judiciary, amongst other institutions; national security;
-                                                our
-                                                journey to
-                                                nationhood;
-                                                and their expectations from our leaders, all of which concern us as lawyers,
-                                                as
-                                                members of
-                                                the
-                                                NBA -the leading watchdog of our society, and as collective and individual
-                                                promoters and
-                                                upholders of the rule of law.
-                                                What resonates across all religious, tribal, political and demographic
-                                                divides,
-                                                is the desire for good, purposeful leadership to bring us to the nation we
-                                                have
-                                                the
-                                                potential to become.
-                                                Against this backdrop, the theme of this year’s conference:
-                                                “GETTING IT RIGHT – Charting the Course for Nigeria’s Nation Building”, is
-                                                most
-                                                apposite.
-                                                It is a carefully thought-out theme that reflects our current realities.
-                                                We are on the cusp of a new Administration and demands are stringent for our
-                                                leaders to get
-                                                it right in all
-                                                areas of our national development. And the role of the legal profession in
-                                                the
-                                                quest for
-                                                getting it right will be central
-                                                to discussions at the conference. the enviable reputation of being the
-                                                largest
-                                                annual gathering of
-                                                lawyers anywhere in the world,
-                                                a whopping 20,000 delegates are expected to attend this year’s AGC. This
-                                                number
-                                                has informed
-                                                the choice of the Moshood
-                                                Abiola National Stadium, Abuja as the venue for this year’s conference and
-                                                we
-                                                daresay,
-                                                delegates will not be disappointed.
-                                                From the religious services to kick off the event, the golf and football
-                                                tournaments, the
-                                                health walks,
-                                                the plenary and breakout sessions, to the ever-vibrant Friendship Centre and
-                                                Mammy market,
-                                                the bustling Exhibition Hall,
-                                                the ‘Unbarred’ concert and the President’s Dinner, the Annual General
-                                                Conference
-                                                has always
-                                                provided something for everyone,
-                                                and this year will be no exception!
-                                                The Conference Planning Committee (CPC) is single-minded in its
-                                                determination to successfully
-                                                deliver on the task entrusted to it. The launch of the website/conference
-                                                portal
-                                                is our
-                                                first step towards
-                                                achieving that goal. On this website, delegates will be able to register,
-                                                make
-                                                enquiries and
-                                                payments, and obtain
-                                                official information and regular updates about all aspects of the
-                                                conference.
-                                                Potential
-                                                sponsors, exhibitors and
-                                                vendors will also find useful information here.
-                                                Once again, welcome to the conference planning portal of the NBA AGC
-                                                2023.
-                                                We look forward to personally welcoming you in August!
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-                @if (false)
-                    <!-- Sec Title -->
-                    <div class="sec-title col-lg-12">
-                        <h2>Who’s Speaking</h2>
-                        <div class="separator"></div>
-                    </div>
-                    <!-- Speaker Block -->
-                    <div class="speaker-block-two col-lg-3 col-md-6 col-sm-12">
-                        <div class="inner-box">
-                            <div class="dots-one"></div>
-                            <div class="dots-two"></div>
-                            <div class="image">
-                                <img src="{{ asset('assets/images/resource/team-5.jpg') }}" alt="" />
-                                <ul class="social-box">
-                                    <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-behance"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
+            </div>
+            <div class="footer-widget-navigation text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="footer-navigation">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="blog-details.html">Sponsors</a></li>
+                                    <li><a href="event-schedule.html">Schedule</a></li>
+                                    <li><a href="blog-details.html">Blog</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
                                 </ul>
                             </div>
-                            <div class="lower-content">
-                                <h3><a href="#popup_1" class="ts-image-popup">Robert Gates</a></h3>
-                                <div class="designation">Lead Speaker</div>
-                            </div>
-
-                            <div id="popup_1" class="popup-content ts-speaker-popup mfp-hide">
-
-                                <div class="row clearfix">
-
-                                    <!-- Image Column -->
-                                    <div class="image-column col-lg-5 col-md-5 col-sm-12">
-                                        <div class="inner-column">
-                                            <div class="image">
-                                                <img src="{{ asset('assets/images/resource/team-5.jpg') }}"
-                                                    alt="">
-                                                <ul class="social-box">
-                                                    <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                                    <li><a href="#"><span class="fab fa-behance"></span></a></li>
-                                                    <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                                                    <li><a href="#"><span class="fab fa-linkedin-in"></span></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <!--Skills-->
-                                            <div class="skills">
-
-                                                <!--Skill Item-->
-                                                <div class="skill-item">
-                                                    <div class="skill-header clearfix">
-                                                        <div class="skill-title">Digital Marketing</div>
-                                                        <div class="skill-percentage">
-                                                            <div class="count-box"><span class="count-text"
-                                                                    data-speed="2000" data-stop="85">0</span>%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="skill-bar">
-                                                        <div class="bar-inner">
-                                                            <div class="bar progress-line" data-width="85"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!--Skill Item-->
-                                                <div class="skill-item">
-                                                    <div class="skill-header clearfix">
-                                                        <div class="skill-title">Strategy Planning</div>
-                                                        <div class="skill-percentage">
-                                                            <div class="count-box"><span class="count-text"
-                                                                    data-speed="2000" data-stop="70">0</span>%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="skill-bar">
-                                                        <div class="bar-inner">
-                                                            <div class="bar progress-line" data-width="70"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!--Skill Item-->
-                                                <div class="skill-item">
-                                                    <div class="skill-header clearfix">
-                                                        <div class="skill-title">Startup Ideas</div>
-                                                        <div class="skill-percentage">
-                                                            <div class="count-box"><span class="count-text"
-                                                                    data-speed="2000" data-stop="95">0</span>%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="skill-bar">
-                                                        <div class="bar-inner">
-                                                            <div class="bar progress-line" data-width="95"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <!-- Content Column -->
-                                    <div class="content-column col-lg-7 col-md-7 col-sm-12">
-                                        <div class="inner-column">
-                                            <h3>Robert Gates</h3>
-                                            <span class="speakder-designation">Speaker, Trainer</span>
-                                            <div class="text">Dolor sit amet, consectetur adipisicing elitm sed eiusmod
-                                                tempor incididunt ut labore etsu dolore magna aliquatenim minim veniam quis
-                                                nostrud exercitation ulamco laboris nis aliquip consequat aute irure dolor.
-                                            </div>
-                                            <ul class="speaker-list">
-                                                <li><span>Profession</span>Digital Marketing</li>
-                                                <li><span>Experience</span>8 Years</li>
-                                                <li><span>Email</span><a
-                                                        href="mailto:robert.gates@domain.com">robert.gates@domain.com</a>
-                                                </li>
-                                                <li><span>Phone</span><a href="tell:567-123-9008">567.123.9008</a></li>
-                                                <li><span>Company</span>MiExpo Business</li>
-                                                <li><span>Website</span><a href="#">www.miexpoconf.com</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
                         </div>
                     </div>
-
-                    <!-- Speaker Block -->
-                    <div class="speaker-block-two col-lg-3 col-md-6 col-sm-12">
-                        <div class="inner-box">
-                            <div class="dots-one"></div>
-                            <div class="dots-two"></div>
-                            <div class="image">
-                                <img src="{{ asset('assets/') }}images/resource/team-6.jpg" alt="" />
-                                <ul class="social-box">
-                                    <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-behance"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                                </ul>
-                            </div>
-                            <div class="lower-content">
-                                <h3><a href="#popup_22" class="ts-image-popup">Paul Wilson</a></h3>
-                                <div class="designation">Lead Speaker</div>
-                            </div>
-
-                            <div id="popup_22" class="popup-content ts-speaker-popup mfp-hide">
-
-                                <div class="row clearfix">
-
-                                    <!-- Image Column -->
-                                    <div class="image-column col-lg-5 col-md-5 col-sm-12">
-                                        <div class="inner-column">
-                                            <div class="image">
-                                                <img src="{{ asset('assets/') }}images/resource/team-6.jpg"
-                                                    alt="">
-                                                <ul class="social-box">
-                                                    <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                                    <li><a href="#"><span class="fab fa-behance"></span></a></li>
-                                                    <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                                                    <li><a href="#"><span class="fab fa-linkedin-in"></span></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <!--Skills-->
-                                            <div class="skills">
-
-                                                <!--Skill Item-->
-                                                <div class="skill-item">
-                                                    <div class="skill-header clearfix">
-                                                        <div class="skill-title">Digital Marketing</div>
-                                                        <div class="skill-percentage">
-                                                            <div class="count-box"><span class="count-text"
-                                                                    data-speed="2000" data-stop="85">0</span>%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="skill-bar">
-                                                        <div class="bar-inner">
-                                                            <div class="bar progress-line" data-width="85"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!--Skill Item-->
-                                                <div class="skill-item">
-                                                    <div class="skill-header clearfix">
-                                                        <div class="skill-title">Strategy Planning</div>
-                                                        <div class="skill-percentage">
-                                                            <div class="count-box"><span class="count-text"
-                                                                    data-speed="2000" data-stop="70">0</span>%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="skill-bar">
-                                                        <div class="bar-inner">
-                                                            <div class="bar progress-line" data-width="70"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!--Skill Item-->
-                                                <div class="skill-item">
-                                                    <div class="skill-header clearfix">
-                                                        <div class="skill-title">Startup Ideas</div>
-                                                        <div class="skill-percentage">
-                                                            <div class="count-box"><span class="count-text"
-                                                                    data-speed="2000" data-stop="95">0</span>%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="skill-bar">
-                                                        <div class="bar-inner">
-                                                            <div class="bar progress-line" data-width="95"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <!-- Content Column -->
-                                    <div class="content-column col-lg-7 col-md-7 col-sm-12">
-                                        <div class="inner-column">
-                                            <h3>Paul Wilson</h3>
-                                            <span class="speakder-designation">Speaker, Trainer</span>
-                                            <div class="text">Dolor sit amet, consectetur adipisicing elitm sed eiusmod
-                                                tempor incididunt ut labore etsu dolore magna aliquatenim minim veniam quis
-                                                nostrud exercitation ulamco laboris nis aliquip consequat aute irure dolor.
-                                            </div>
-                                            <ul class="speaker-list">
-                                                <li><span>Profession</span>Digital Marketing</li>
-                                                <li><span>Experience</span>8 Years</li>
-                                                <li><span>Email</span><a
-                                                        href="mailto:robert.gates@domain.com">robert.gates@domain.com</a>
-                                                </li>
-                                                <li><span>Phone</span><a href="tell:567-123-9008">567.123.9008</a></li>
-                                                <li><span>Company</span>MiExpo Business</li>
-                                                <li><span>Website</span><a href="#">www.miexpoconf.com</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- Speaker Block -->
-                    <div class="speaker-block-two col-lg-3 col-md-6 col-sm-12">
-                        <div class="inner-box">
-                            <div class="dots-one"></div>
-                            <div class="dots-two"></div>
-                            <div class="image">
-                                <img src="{{ asset('assets/') }}images/resource/team-7.jpg" alt="" />
-                                <ul class="social-box">
-                                    <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-behance"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                                </ul>
-                            </div>
-                            <div class="lower-content">
-                                <h3><a href="#popup_3" class="ts-image-popup">George Tim</a></h3>
-                                <div class="designation">Lead Speaker</div>
-                            </div>
-
-                            <div id="popup_3" class="popup-content ts-speaker-popup mfp-hide">
-
-                                <div class="row clearfix">
-
-                                    <!-- Image Column -->
-                                    <div class="image-column col-lg-5 col-md-5 col-sm-12">
-                                        <div class="inner-column">
-                                            <div class="image">
-                                                <img src="{{ asset('assets/') }}images/resource/team-7.jpg"
-                                                    alt="">
-                                                <ul class="social-box">
-                                                    <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                                    <li><a href="#"><span class="fab fa-behance"></span></a></li>
-                                                    <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                                                    <li><a href="#"><span class="fab fa-linkedin-in"></span></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <!--Skills-->
-                                            <div class="skills">
-
-                                                <!--Skill Item-->
-                                                <div class="skill-item">
-                                                    <div class="skill-header clearfix">
-                                                        <div class="skill-title">Digital Marketing</div>
-                                                        <div class="skill-percentage">
-                                                            <div class="count-box"><span class="count-text"
-                                                                    data-speed="2000" data-stop="85">0</span>%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="skill-bar">
-                                                        <div class="bar-inner">
-                                                            <div class="bar progress-line" data-width="85"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!--Skill Item-->
-                                                <div class="skill-item">
-                                                    <div class="skill-header clearfix">
-                                                        <div class="skill-title">Strategy Planning</div>
-                                                        <div class="skill-percentage">
-                                                            <div class="count-box"><span class="count-text"
-                                                                    data-speed="2000" data-stop="70">0</span>%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="skill-bar">
-                                                        <div class="bar-inner">
-                                                            <div class="bar progress-line" data-width="70"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!--Skill Item-->
-                                                <div class="skill-item">
-                                                    <div class="skill-header clearfix">
-                                                        <div class="skill-title">Startup Ideas</div>
-                                                        <div class="skill-percentage">
-                                                            <div class="count-box"><span class="count-text"
-                                                                    data-speed="2000" data-stop="95">0</span>%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="skill-bar">
-                                                        <div class="bar-inner">
-                                                            <div class="bar progress-line" data-width="95"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <!-- Content Column -->
-                                    <div class="content-column col-lg-7 col-md-7 col-sm-12">
-                                        <div class="inner-column">
-                                            <h3>George Tim</h3>
-                                            <span class="speakder-designation">Speaker, Trainer</span>
-                                            <div class="text">Dolor sit amet, consectetur adipisicing elitm sed eiusmod
-                                                tempor incididunt ut labore etsu dolore magna aliquatenim minim veniam quis
-                                                nostrud exercitation ulamco laboris nis aliquip consequat aute irure dolor.
-                                            </div>
-                                            <ul class="speaker-list">
-                                                <li><span>Profession</span>Digital Marketing</li>
-                                                <li><span>Experience</span>8 Years</li>
-                                                <li><span>Email</span><a
-                                                        href="mailto:robert.gates@domain.com">robert.gates@domain.com</a>
-                                                </li>
-                                                <li><span>Phone</span><a href="tell:567-123-9008">567.123.9008</a></li>
-                                                <li><span>Company</span>MiExpo Business</li>
-                                                <li><span>Website</span><a href="#">www.miexpoconf.com</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- Speaker Block -->
-                    <div class="speaker-block-two col-lg-3 col-md-6 col-sm-12">
-                        <div class="inner-box">
-                            <div class="dots-one"></div>
-                            <div class="dots-two"></div>
-                            <div class="image">
-                                <img src="{{ asset('assets/') }}images/resource/team-8.jpg" alt="" />
-                                <ul class="social-box">
-                                    <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-behance"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                                    <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                                </ul>
-                            </div>
-                            <div class="lower-content">
-                                <h3><a href="#popup_4" class="ts-image-popup">Benjamin Zara</a></h3>
-                                <div class="designation">Lead Speaker</div>
-                            </div>
-
-                            <div id="popup_4" class="popup-content ts-speaker-popup mfp-hide">
-
-                                <div class="row clearfix">
-
-                                    <!-- Image Column -->
-                                    <div class="image-column col-lg-5 col-md-5 col-sm-12">
-                                        <div class="inner-column">
-                                            <div class="image">
-                                                <img src="{{ asset('assets/') }}images/resource/team-8.jpg"
-                                                    alt="">
-                                                <ul class="social-box">
-                                                    <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                                                    <li><a href="#"><span class="fab fa-behance"></span></a></li>
-                                                    <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                                                    <li><a href="#"><span class="fab fa-linkedin-in"></span></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <!--Skills-->
-                                            <div class="skills">
-
-                                                <!--Skill Item-->
-                                                <div class="skill-item">
-                                                    <div class="skill-header clearfix">
-                                                        <div class="skill-title">Digital Marketing</div>
-                                                        <div class="skill-percentage">
-                                                            <div class="count-box"><span class="count-text"
-                                                                    data-speed="2000" data-stop="85">0</span>%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="skill-bar">
-                                                        <div class="bar-inner">
-                                                            <div class="bar progress-line" data-width="85"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!--Skill Item-->
-                                                <div class="skill-item">
-                                                    <div class="skill-header clearfix">
-                                                        <div class="skill-title">Strategy Planning</div>
-                                                        <div class="skill-percentage">
-                                                            <div class="count-box"><span class="count-text"
-                                                                    data-speed="2000" data-stop="70">0</span>%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="skill-bar">
-                                                        <div class="bar-inner">
-                                                            <div class="bar progress-line" data-width="70"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!--Skill Item-->
-                                                <div class="skill-item">
-                                                    <div class="skill-header clearfix">
-                                                        <div class="skill-title">Startup Ideas</div>
-                                                        <div class="skill-percentage">
-                                                            <div class="count-box"><span class="count-text"
-                                                                    data-speed="2000" data-stop="95">0</span>%</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="skill-bar">
-                                                        <div class="bar-inner">
-                                                            <div class="bar progress-line" data-width="95"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <!-- Content Column -->
-                                    <div class="content-column col-lg-7 col-md-7 col-sm-12">
-                                        <div class="inner-column">
-                                            <h3>Benjamin Zara</h3>
-                                            <span class="speakder-designation">Speaker, Trainer</span>
-                                            <div class="text">Dolor sit amet, consectetur adipisicing elitm sed eiusmod
-                                                tempor incididunt ut labore etsu dolore magna aliquatenim minim veniam quis
-                                                nostrud exercitation ulamco laboris nis aliquip consequat aute irure dolor.
-                                            </div>
-                                            <ul class="speaker-list">
-                                                <li><span>Profession</span>Digital Marketing</li>
-                                                <li><span>Experience</span>8 Years</li>
-                                                <li><span>Email</span><a
-                                                        href="mailto:robert.gates@domain.com">robert.gates@domain.com</a>
-                                                </li>
-                                                <li><span>Phone</span><a href="tell:567-123-9008">567.123.9008</a></li>
-                                                <li><span>Company</span>MiExpo Business</li>
-                                                <li><span>Website</span><a href="#">www.miexpoconf.com</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                @endif
-
-            </div>
-
-        </div>
-    </section>
-    <!-- End Speaker Section Two -->
-
-    <!-- Fluid Section Two -->
-    <section class="fluid-section-two">
-        <!-- Section Icons -->
-        <div class="secion-icons">
-            <div class="icon-one"><img src="{{ asset('assets/images/icons/icon-23.png') }}" alt="" /></div>
-            <div class="icon-two"></div>
-            <div class="icon-three"><img src="{{ asset('assets/images/icons/icon-24.png') }}" alt="" /></div>
-        </div>
-        <div class="outer-section clearfix">
-            <!--Content Column-->
-            <div class="content-column">
-                <div class="content-box">
-                    <!-- Sec Title -->
-                    <div class="sec-title light">
-                        <div class="title">From the NBA president's desk</div>
-                        <h2>A Goodwill Message</h2>
-                    </div>
-
-                    <!--Accordian Box-->
-                    <ul class="accordion-box">
-
-
-                        <!--Block-->
-                        <li class="accordion">
-                            <div class="acc-btn">
-                                <p class="greeting">
-                                    The 63rd edition of the conference represents a novel platform for
-                                    knowledge exchange on the continent as we bring together world leaders, political
-                                    icons, judges, leading lawyers, thought leaders, policy makers, business icons, and
-                                    civil society to not just discuss but produce an implementation plan to foster the
-                                    adoption of policies, standards and practices leading to socio-political stability,
-                                    economic growth, sustainable and infrastructural development for accelerated
-                                    regional and economic integration...
-                                </p>
-                            </div>
-                        </li>
-
-                    </ul>
-
                 </div>
             </div>
 
-            <!--Image Column-->
-            <div class="image-column">
-                <div class="image-layer"
-                    style="background-image: url({{ cloudinary_url('nbaconference/bg/pres_vey50f', ['width' => 500]) }})">
-                </div>
-                <div class="image">
-                    <img src="{{ asset('assets/') }}images/resource/image-3.jpg" alt="">
-                </div>
-                <div class="image-content">
-                    <div class="text">YAKUBU CHONOKO MAIKYAU, OON SAN
-                    </div>
-                    <div class="title">From the NBA president's desk</div>
-                    <div class="icon"><img src="{{ asset('assets/images/icons/icon-25.png') }}" alt="" />
+            <!-- Footer Copyright Start -->
+            <div class="footer-copyright-area">
+                <div class="container">
+                    <div class="footer-copyright-wrap">
+                        <div class="row align-items-center">
+                            <div class="col-lg-12">
+                                <!-- Footer Copyright Text Start -->
+                                <div class="copyright-text text-center">
+                                    <p>2023 Copyright Expotin Designed by Love . All Rights Reserved</p>
+                                </div>
+                                <!-- Footer Copyright Text End -->
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!--End Image Column-->
-
+            <!-- Footer Copyright End -->
         </div>
-    </section>
+        <!-- Footer Section End -->
 
-    <!-- Programs Section -->
-    <section class="programs-section">
-        <!-- Section Icons -->
-        {{-- <div class="section-icons">
-            <div class="icon-one"><img src="{{ asset('assets/images/icons/icon-26.png') }}" alt="" /></div>
-            <div class="icon-two"><img src="{{ asset('assets/images/icons/icon-27.png') }}" alt="" /></div>
-            <div class="icon-three"><img src="{{ asset('assets/images/icons/icon-28.png') }}" alt="" /></div>
-        </div> --}}
-        <div class="auto-container">
-            <!-- Sec Title -->
-            <div class="sec-title centered">
-                <div class="title">NBA Conference Agenda To Explore</div>
-                <h2>Program Agenda</h2>
-                <div class="separator"></div>
-            </div>
-
-            <div class="inner-container">
-
-                <div class="section-icons">
-                    <div class="icon-one"><img src="{{ asset('assets/images/icons/icon-26.png') }}" alt="" />
-                    </div>
-                    <div class="icon-two"><img src="{{ asset('assets/images/icons/icon-27.png') }}" alt="" />
-                    </div>
-                    <div class="icon-three"><img src="{{ asset('assets/images/icons/icon-28.png') }}" alt="" />
-                    </div>
-                </div>
-                {{-- coming soon starts here --}}
-                <div class="placeholder">
-                    <div class="loading">
-                        <div class="loading-text">
-                            <span class="loading-text-words">C</span>
-                            <span class="loading-text-words">O</span>
-                            <span class="loading-text-words">M</span>
-                            <span class="loading-text-words">I</span>
-                            <span class="loading-text-words">N</span>
-                            <span class="loading-text-words">G</span>
-                            <span class="loading-text-words"> </span>
-                            <span class="loading-text-words">S</span>
-                            <span class="loading-text-words">O</span>
-                            <span class="loading-text-words">O</span>
-                            <span class="loading-text-words">N</span>
-                            <span class="loading-text-words">.</span>
-                            <span class="loading-text-words">.</span>
-                            <span class="loading-text-words">.</span>
-                        </div>
-                    </div>
-                </div>
-                {{-- coming soon ends here --}}
-
-                {{-- <!-- Programs Block -->
-                <div class="programs-block">
-                    <div class="inner-block clearfix wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        <div class="content col-lg-6 col-md-12 col-sm-12">
-                            <div class="content-inner">
-                                <!-- Program Info -->
-                                <div class="program-info">WORKSHOP <span class="time">9:00 am to 11:00 am</span><span
-                                        class="dott"></span></div>
-                                <div class="title">(Yakubu Chonoko)</div>
-                                <h3><a href="#">The Instant Results</a></h3>
-                                <div class="text">Veniam quis nostrud exercitation ullamco laboris irure dolorn
-                                    reprehenderit voluptate velit.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Programs Block -->
-                <div class="programs-block style-two">
-                    <div class="inner-block clearfix wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        <div class="content col-lg-6 col-md-12 col-sm-12">
-                            <div class="content-inner">
-                                <!-- Program Info -->
-                                <div class="program-info">SEMINAR <span class="time">9:00 am to 11:00 am</span><span
-                                        class="dott"></span></div>
-                                <div class="title">(Yakubu Chonoko)</div>
-                                <h3><a href="#">Focus On Dynamics</a></h3>
-                                <div class="text">Veniam quis nostrud exercitation ullamco laboris irure dolorn
-                                    reprehenderit voluptate velit.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Programs Block -->
-                <div class="programs-block">
-                    <div class="inner-block clearfix wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        <div class="content col-lg-6 col-md-12 col-sm-12">
-                            <div class="content-inner">
-                                <!-- Program Info -->
-                                <div class="program-info">WORKSHOP <span class="time">9:00 am to 11:00 am</span><span
-                                        class="dott"></span></div>
-                                <div class="title">(Yakubu Chonoko)</div>
-                                <h3><a href="#">Growing Power Politics</a></h3>
-                                <div class="text">Veniam quis nostrud exercitation ullamco laboris irure dolorn
-                                    reprehenderit voluptate velit.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Programs Block -->
-                <div class="programs-block style-two">
-                    <div class="inner-block clearfix wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        <div class="content col-lg-6 col-md-12 col-sm-12">
-                            <div class="content-inner">
-                                <!-- Program Info -->
-                                <div class="program-info">SEMINAR <span class="time">9:00 am to 11:00 am</span><span
-                                        class="dott"></span></div>
-                                <div class="title">(Yakubu Chonoko)</div>
-                                <h3><a href="#">Inspiration Of Arctics</a></h3>
-                                <div class="text">Veniam quis nostrud exercitation ullamco laboris irure dolorn
-                                    reprehenderit voluptate velit.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
-
-            </div>
-            {{--
-            <div class="btn-box text-center">
-                <a href="#" class="theme-btn btn-style-one">get More Details</a>
-            </div> --}}
-
+        <!-- back to top start -->
+        <div class="progress-wrap">
+            <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+            </svg>
         </div>
-        {{-- <div class="side-img paroller" data-paroller-factor="0.80" data-paroller-factor-lg="0.150"
-            data-paroller-type="foreground" data-paroller-direction="vertical">
-            <img src="{{ asset('assets/images/resource/id-card.png') }}" alt="" />
-        </div> --}}
-    </section>
-    <!-- End Programs Section -->
-
-    <!-- Gallery Section Two -->
-    <section class="gallery-section-two">
-        <!-- Section Icons -->
-        <div class="section-icons">
-            <div class="icon-one"><img src="{{ asset('assets/') }}images/icons/icon-23.png" alt="" /></div>
-        </div>
-        <div class="auto-container d-flex">
-            <!-- Sec Title -->
-            <div class="sec-title light">
-                <div class="title">NBA AGC Gallery</div>
-                <h2>Conference Gallery</h2>
-            </div>
-            <div class="mt-5" style="margin-left:20px; margin-top:20px; cursor: pointer;">
-                <a href="https://drive.google.com/drive/folders/11JM9_E7TgMOzVM0myjZ1OzxsT7QAGgAe"
-                    class="theme-btn btn-style-one" target="_blank">View All</a>
-            </div>
-        </div>
-        <div class="outer-container">
-            <div class="gallery-carousel owl-carousel owl-theme">
-
-                <!-- Gallery Block -->
-                <div class="gallery-block">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="{{ $i = cloudinary_url('nbaconference/gallery/766A8218_zxkjan', ['width' => 400]) }}"
-                                alt="" />
-                            <!-- Overlay Box -->
-                            <div class="overlay-box">
-                                <div class="overlay-inner">
-                                    <div class="overlay-content">
-                                        <a class="plus"
-                                            href="{{ $i = cloudinary_url('nbaconference/gallery/766A8218_zxkjan') }}"
-                                            data-fancybox="gallery-1" data-caption=""><span
-                                                class="flaticon-add-1"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Block -->
-                <div class="gallery-block">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="{{ $i = cloudinary_url('nbaconference/gallery/766A8096_oxwimn', ['width' => 400]) }}"
-                                alt="" />
-                            <!-- Overlay Box -->
-                            <div class="overlay-box">
-                                <div class="overlay-inner">
-                                    <div class="overlay-content">
-                                        <a class="plus"
-                                            href="{{ $i = cloudinary_url('nbaconference/gallery/766A8096_oxwimn') }}"
-                                            data-fancybox="gallery-1" data-caption=""><span
-                                                class="flaticon-add-1"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Gallery Block -->
-                <div class="gallery-block">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="{{ $i = cloudinary_url('nbaconference/gallery/5_xiseqh', ['width' => 400]) }}"
-                                alt="" />
-                            <!-- Overlay Box -->
-                            <div class="overlay-box">
-                                <div class="overlay-inner">
-                                    <div class="overlay-content">
-                                        <a class="plus"
-                                            href="{{ $i = cloudinary_url('nbaconference/gallery/5_xiseqh') }}"
-                                            data-fancybox="gallery-1" data-caption=""><span
-                                                class="flaticon-add-1"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Block -->
-                <div class="gallery-block">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="{{ $i = cloudinary_url('nbaconference/gallery/6_w907ek', ['width' => 400]) }}"
-                                alt="" />
-                            <!-- Overlay Box -->
-                            <div class="overlay-box">
-                                <div class="overlay-inner">
-                                    <div class="overlay-content">
-                                        <a class="plus"
-                                            href="{{ $i = cloudinary_url('nbaconference/gallery/6_w907ek') }}"
-                                            data-fancybox="gallery-1" data-caption=""><span
-                                                class="flaticon-add-1"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Block -->
-                <div class="gallery-block">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="{{ asset('images/conference-1.jpeg') }}" alt="" />
-                            <!-- Overlay Box -->
-                            <div class="overlay-box">
-                                <div class="overlay-inner">
-                                    <div class="overlay-content">
-                                        <a class="plus" href="{{ asset('images/conference-1.jpeg') }}"
-                                            data-fancybox="gallery-1" data-caption=""><span
-                                                class="flaticon-add-1"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Gallery Block -->
-                <div class="gallery-block">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="{{ asset('images/conference-2.jpeg') }}" alt="" />
-                            <!-- Overlay Box -->
-                            <div class="overlay-box">
-                                <div class="overlay-inner">
-                                    <div class="overlay-content">
-                                        <a class="plus" href="{{ asset('images/conference-2.jpeg') }}"
-                                            data-fancybox="gallery-1" data-caption=""><span
-                                                class="flaticon-add-1"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Gallery Block -->
-                <div class="gallery-block">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="{{ asset('images/conference-3.jpeg') }}" alt="" />
-                            <!-- Overlay Box -->
-                            <div class="overlay-box">
-                                <div class="overlay-inner">
-                                    <div class="overlay-content">
-                                        <a class="plus" href="{{ asset('images/conference-3.jpeg') }}"
-                                            data-fancybox="gallery-1" data-caption=""><span
-                                                class="flaticon-add-1"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- End Gallery Section Two -->
-
-    <!-- Digital Event Section -->
-    <section class="digital-event-section">
-        <div class="map-outer">
-            {{-- <div class="map-canvas" data-zoom="12" data-lat="-37.817085" data-lng="144.955631" data-type="roadmap"
-                data-hue="#ffc400" data-title="" data-icon-path="{{ asset('assets/images/icons/map-marker.png') }}"
-                data-content="256, Victory Street,, New York <br> City, AZ 550067 <br> (1800) 456 7890 <br> Mon-Sat: 7.00an - 9.00pm <br> Sunday closed">
-            </div> --}}
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.2818269973864!2d7.451268214786729!3d9.038035993514637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0b5a334275eb%3A0x3a912395bd8b3a54!2sMoshood%20Abiola%20National%20Stadium!5e0!3m2!1sen!2sng!4v1684149451028!5m2!1sen!2sng"
-                width="2000" height="600" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <div class="auto-container">
-            <div class="content-box">
-                <h3>NBA AGC 2023</h3>
-                <div class="separator"></div>
-                <!-- Digital List -->
-                <ul class="digital-list">
-                    <li>Venue:<span>M.K.O Abiola Stadium, Abuja, Nigeria</span></li>
-                    <li>Conference Schedule:<span>August 25 -September 1 ‘2023 - 0900 to 1800</span></li>
-                    <li>For further information:
-                        <span>Phone: <a href="tel:002-345-9870">09166929240</a></span>
-                        <span>Email: <a href="mailto:info@nbaconference.com">info@nbaconference.com</a></span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    <!-- End Digital Event Section -->
+        <!-- back to top end -->
 @endsection
-
-@push('script')
-    <x-scripts.alpine />
-    <x-scripts.quickview />
-@endpush

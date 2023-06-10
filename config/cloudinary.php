@@ -41,13 +41,13 @@ return [
     'upload_preset' => env('CLOUDINARY_UPLOAD_PRESET'),
 
     'folders' => [
-        'photos'  => 'nbaconference/user/',
+        'photos'  => 'imt/background/',
     ],
 
 
 
     'defaults' => [
-        'photos' => 'nbaconference/user/defaults/'
+        'photos' => 'imt/background/defaults/'
     ],
 
     'transformations' => [

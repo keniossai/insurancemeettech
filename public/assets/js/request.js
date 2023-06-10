@@ -6,23 +6,6 @@ $.ajaxSetup({
     }
 });
 
-
-function bootstrapNotify(message, type)
-{
-    $.notify({
-        message: message
-    }, {
-        type: type
-    });
-}
-
-
-function checkAll(a, b)
-{
-    $(b + ':visible').prop('checked', $(a).is(':checked')).change();
-}
-
-
 /**
  * Set a global error message
  * @type {string}
@@ -30,55 +13,64 @@ function checkAll(a, b)
 const ERROR_GLOBAL = "Oops! Something went wrong. Let's try that again";
 
 
-function submitForm(form_id, callback, auto_alert = true)
+function notify(message, type) {
+    $.notify({ message: message }, { type: type });
+}
+
+function checkAll(a, b) {
+    $(b + ':visible').prop('checked', $(a).is(':checked')).change();
+}
+
+let spinner = `
+    <svg width="18" viewBox="-2 -2 42 42" xmlns="http://www.w3.org/2000/svg" stroke="white" class="ml-2 spinner">
+        <g fill="none" fill-rule="evenodd">
+            <g transform="translate(1 1)" stroke-width="4">
+                <circle stroke-opacity=".5" cx="18" cy="18" r="18"></circle>
+                <path d="M36 18c0-9.94-8.06-18-18-18">
+                    <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s" repeatCount="indefinite"></animateTransform>
+                </path>
+            </g>
+        </g>
+    </svg>`;
+
+function submitForm(form_id, callback, should_notify = true)
 {
     let form = $(form_id);
 
-    if(form.attr('enctype') === 'multipart/form-data') {
-
-        return submitFormMultipart(form_id, callback, auto_alert);
+    if (form.attr('enctype') === 'multipart/form-data') {
+        return submitFormMultipart(form_id, callback, should_notify);
     }
 
     let form_data = form.serializeArray();
 
-    let preloader = form.find('.preloader');
+    // Add the spinner and disable the submit button.
+    form.find('[type=submit]').append(spinner).prop('disabled', true);
 
-    preloader.css('display', 'inline-block');
+    return $.post(form.attr('action'), form_data, response => {
+        if (should_notify) {
+            notify(response.message, 'success');
+        }
 
-    // Disable the form submit button
-    form.find('button[type=submit]').prop('disabled', true);
-
-    return $.post(form.attr('action'), form_data, result => {
-
-        if(auto_alert) bootstrapNotify(result.message, result.status ? 'success' : 'danger');
-
-        // Additional callback function to run
-        if(callback) callback(result, form);
-
+        // Run the supplied callback, passing the response.
+        if (callback) {
+            callback(response, form);
+        }
     }, 'json').fail(({responseJSON}) => {
-
-        bootstrapNotify(responseJSON ? responseJSON.message : ERROR_GLOBAL, 'danger');
-
+        notify(responseJSON ? responseJSON.message : ERROR_GLOBAL, 'danger');
     }).always(() => {
-
-        // Reset the defaults
-        preloader.hide();
-        form.find('button[type=submit]').prop('disabled', false);
+        // Remove the spinner and re-enable the submit button.
+        form.find('[type=submit]').prop('disabled', false).find('.spinner').remove();
     });
 }
 
 
-function submitFormMultipart(form_id, callback, auto_alert = true)
+function submitFormMultipart(form_id, callback, should_notify = true)
 {
     let form  = $(form_id);
     let form_data = new FormData(form[0]);
 
-    let preloader = form.find('.preloader');
-
-    preloader.css('display', 'inline-block');
-
-    // Disable the form submit button
-    form.find('button[type=submit]').prop('disabled', true);
+    // Add the spinner and disable the submit button.
+    form.find('[type=submit]').append(spinner).prop('disabled', true);
 
     return $.ajax({
         url:		form.attr('action'),
@@ -88,28 +80,28 @@ function submitFormMultipart(form_id, callback, auto_alert = true)
         processData: false,
         dataType:	'json',
         cache:		false,
-        success: result => {
+        success: response => {
+            if (should_notify) {
+                notify(response.message, 'success');
+            }
 
-            if(auto_alert) bootstrapNotify(result.message, result.status ? 'success' : 'danger');
-
-            // Additional callback function to run
-            if(callback) callback(result, form);
+            // Run the supplied callback, passing the response.
+            if (callback) {
+                callback(response, form);
+            }
         },
         error: ({responseJSON}) => {
-
-            bootstrapNotify(responseJSON ? responseJSON.message : ERROR_GLOBAL, 'danger');
+            notify(responseJSON ? responseJSON.message : ERROR_GLOBAL, 'danger');
         },
         complete: () => {
-
-            // Reset the defaults
-            preloader.hide();
-            form.find('button[type=submit]').prop('disabled', false);
+            // Remove the spinner and re-enable the submit button.
+            form.find('[type=submit]').prop('disabled', false).find('.spinner').remove();
         }
     });
 }
 
 
-function getRequest(url, callback, auto_alert = true)
+function getRequest(url, callback, should_notify = true)
 {
     // If an anchor element object was passed instead, then use the href attribute as target URL.
     url = (typeof(url) === "object") ? $(url).attr('href') : url;
@@ -124,18 +116,15 @@ function getRequest(url, callback, auto_alert = true)
     // Disable the button
     btn.prop('disabled', true);
 
-    return $.get(url, result => {
-        if(auto_alert) bootstrapNotify(result.message, result.status ? 'success' : 'danger');
+    return $.get(url, response => {
+        if (should_notify) notify(response.message, 'success');
 
-        // Additional callback function to run
-        if(callback) callback(result);
+        // Run the supplied callback, passing the response.
+        if (callback) callback(response);
 
     }, 'json').fail(({responseJSON}) => {
-
-        bootstrapNotify(responseJSON ? responseJSON.message : ERROR_GLOBAL, 'danger');
-
+        notify(responseJSON ? responseJSON.message : ERROR_GLOBAL, 'danger');
     }).always(() => {
-
         // Reset the defaults
         preloader.hide();
         btn.prop('disabled', false);
@@ -145,21 +134,23 @@ function getRequest(url, callback, auto_alert = true)
 
 
 /**
- * A wrapper for common usages
+ * -----------------------------------------------------
+ * A wrapper around very common usages.
+ * -----------------------------------------------------
  *
- * Simply add the class to the form you intend to handle submit
+ * Simply add the class 'x-submit' to your form, and you're done.
  */
 $(document).on('submit', '.x-submit', function(e) {
     e.preventDefault();
 
     let form = this;
 
-    if($(form).data('confirm')) {
+    if ($(form).data('confirm')) {
         swal({
-            title: $(form).data('swal-title') ?? "Are you sure?",
+            title: $(form).data('swal-title') ?? "Sure?",
             text: $(form).data('swal-text') ?? "Please confirm you want to proceed with this request...",
             icon: "warning",
-            buttons: [true, {
+            buttons: ['Nevermind', {
                 text: $(form).data('swal-btn') ?? "Yes, proceed",
                 closeModal: false,
             }],
@@ -181,18 +172,44 @@ const callSubmitForm = (form) => (
     submitForm(form, function (response, form) {
         // Close any open modals
         $('.modal').modal('hide');
+        $('.modal-backdrop').hide();
 
-        let then = form.data('then');
-        if(then) {
-            if(then === 'reload') {
-                location.reload();
-            } else if(then === 'redirect') {
-                location.href = response.data.continue ? response.data.continue : form.data('continue');
-            } else if(then === 'alert') {
-                swal(response.title, response.message, 'success');
-            } else {
-                window[then](response, form);
-            }
+        form[0].dispatchEvent(new CustomEvent('finish', { detail: response }));
+
+        if (response.data.redirect ?? null) {
+            return location.href = response.data.redirect;
         }
-    })
+
+        let callback = form.data('then');
+
+        if (! callback) {
+            return;
+        }
+
+        if (callback === 'reload') {
+            return location.reload();
+        }
+
+        if (callback.startsWith('redirect:')) {
+            return location.href = callback.substring(9);
+        }
+
+        if (callback === 'alert') {
+            return swal(response.title, response.message, 'success');
+        }
+
+        if (callback === 'reset') {
+            return form[0].reset();
+        }
+
+        if (callback === 'livewire:refresh') {
+            return Livewire.emit('refresh');
+        }
+
+        if (callback.startsWith('livewire:refresh.')) {
+            return Livewire.emitTo(callback.substring(17), 'refresh');
+        }
+
+        return window[callback](response, form);
+    }, ! ($(form).data('quietly') ?? false))
 );
