@@ -2,29 +2,152 @@
 
 @section('content')
 
-    <x-banner title="My Profile" :meta="[
-        'image'    =>  cloudinary_url('nbaconference/banner/leanr_bg_nrvkmz', ['width' => 1000]),
-        'url'      => route('home'),
-        'prevPage' => 'Home',
-    ]" />
+    <!-- Hero Start -->
+<div class="section exvent-hero-section d-lg-flex d-block align-items-center inner-page-hero" style="background-image: url(assets/images/bg/about_page_bg.jpg);">
+    <img class="shape-1 img-fluid" src="assets/images/shape/hero_shape1.png" alt="">
+    <img class="shape-2 img-fluid" src="assets/images/shape/hero_shape2.png" alt="">
 
-    <section class="ts-contact-form section-bg">
-        <div class="container">
+    <div class="container">
+        <div class="row exvent-hero-row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <div class="page-title">
+                    <h2 class="section-title">My Profile</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Hero End -->
 
-            @if(!$user->hasVerifiedEmail())
-                <div class="alert alert-warning">
-                    <small>
-                        Before continuing, could you verify your email address by clicking on the link we emailed to you? If you didn't receive
-                        the email, we will gladly send you another.
-                    </small>
+<div class="login-register-area section-padding-02">
+    <div class="container">
+        @if(!$user->hasVerifiedEmail())
+            <div class="alert alert-warning">
+                <small>
+                    Before continuing, could you verify your email address by clicking on the link we emailed to you? If you didn't receive
+                    the email, we will gladly send you another.
+                </small>
 
-                    <form action="{{ route('api.users.verification', $user) }}" class="x-submit">
-                        <button class="btn mt-2" type="submit">
-                            <i class="fa fa-envelope"></i> Resend Link  <x-spinner />
-                        </button>
+                <form action="{{ route('api.users.verification', $user) }}" class="x-submit">
+                    <button class="btn mt-2" type="submit">
+                        <i class="fa fa-envelope"></i> Resend Link  <x-spinner />
+                    </button>
+                </form>
+            </div>
+        @endif
+        <div class="row justify-content-center g-5">
+            <div class="col-lg-4">
+                <div class="hero-form mt-0 grey-bg p-3 text-center">
+                    <img src="{{ $user->photo }}" width="180" alt="photo" class="rounded-circle">
+                    <form class="exvent-form x-submit text-center" enctype="multipart/form-data" data-then="reload" action="{{ route('api.users.photo.update', $user) }}">
+                        @method('put')
+
+                        <label class="badge badge-info badge-pill" for="photo" style="cursor: pointer">
+                            <i class="fa fa-camera"></i> <small>Upload Photo</small> <x-spinner />
+                        </label>
+                        <input type="file" name="photo" id="photo" style="display: none" onchange="$(this).parents('form').submit()">
+                    </form>
+                    <h2 class="column-title text-center mt-3" style="font-size: 22px">
+                        {{ $user->full_name }}
+                        <span>{{ $user->designation }}</span>
+                        <span>{{ $user->organization }}</span>
+                    </h2>
+                    <p class="text-center">
+                        {{ $user->email }} <x-verified :verified="$user->hasVerifiedEmail()" />
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="hero-form mt-0 grey-bg">
+                    
+                    <form class="exvent-form x-submit" action="{{ route('api.users.update', $user) }}" method="post"
+                    data-then="alert">
+                        <div class="row gy-4">
+                            <div class="col-md-6">
+                                <div class="single-input white-bg">
+                                    <input type="text" name="first_name" id="first_name" placeholder="First Name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="single-input white-bg">
+                                    <input type="text" name="last_name" id="last_name" placeholder="Last Name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="single-input white-bg">
+                                    <input placeholder="e.g johndoe@example.com" name="email"
+                                    id="email" type="email" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="single-input white-bg">
+                                    <input placeholder="e.g johndoe@example.com" name="email_confirmation"
+                                    id="email_confirmation" type="email" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="single-input white-bg">
+                                    <input name="phone" id="phone" required maxlength="15" minlength="10"
+                                    type="tel" placeholder="e.g 07012345678" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="single-input white-bg">
+                                    <input type="text" name="organisation" id="organisation" placeholder="Organisation" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="single-input white-bg">
+                                    <input type="text" name="designation" id="designation" placeholder="Designation" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="single-input white-bg">
+                                    
+                                        <select class="single-input white-bg" name="gender" id="gender"
+                                            required>
+                                            <option value="">Select gender</option>
+                                            <option value="M">Male</option>
+                                            <option value="F">Female</option>
+                                        </select>
+                                    {{-- <input type="select" name="gender" id="gender" placeholder="gender" required> --}}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="single-input white-bg">
+                                    <input type="password" name="password" id="password" placeholder="Password" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="single-input white-bg">
+                                    <input name="password_confirmation"  id="password_confirmation" type="password" placeholder="Repeat Password"
+                                    required>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mt-4">
+                                <div class="form-group alert alert-info">
+                                    <label for="attest">Attestation *</label>
+                                    <br>
+                                    <input id="attest" type="checkbox" required>
+                                    <small class="text-"><i>I confirm that the information provided herein is correct
+                                            and valid. I shall bear responsibility for any misinformation.</i></small>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center m-auto">
+                                <button type="submit" class="submit_btn">
+                                    Register <x-spinner />
+                                </button>
+                            </div>
+
+                        </div>
                     </form>
                 </div>
-            @endif
+            </div>
+        </div>
+    </div>
+</div>
+    <section class="ts-contact-form section-bg">
+        <div class="container">
 
             <div class="row">
                 <div class="col-lg-4 row">
