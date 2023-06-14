@@ -84,7 +84,9 @@
 
                         <!-- Header Button Start -->
                         <div class="header-btn d-none d-xl-block">
-                            <button class="btn-5" style="width: 150px;">Buy Ticket Now</button>
+                            <a href="{{ route('register') }}">
+                                <button class="btn-5" style="width: 150px;">Register Now</button>
+                            </a>
                         </div>
                         <!-- Header Button End -->
 

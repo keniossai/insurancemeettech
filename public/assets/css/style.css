@@ -369,6 +369,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   bottom: 0;
 }
 
+
 .section-title .sub-title.color-2 {
   color: #f9d464;
 }
@@ -1046,7 +1047,8 @@ textarea:-ms-input-placeholder {
   font-size: 16px;
   text-decoration: none;
   background-color: #ffae4a;
-  padding: 15px 0;
+  padding: 10px 0;
+  border-radius: 10px;
   border: none;
   color: #fff;
   position: relative;
