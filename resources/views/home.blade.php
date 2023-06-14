@@ -12,10 +12,10 @@
                                 <div class="col-md-8 text-center">
                                     <div class="hero-conent-wrapper">
                                         <div class="top-title-date" data-aos="fade-down" data-aos-delay="500">
-                                            <span>January 20, 2023</span>
+                                            <span>September 20, 2023</span>
                                         </div>
                                         <div class="main-title" data-aos="fade-down" data-aos-delay="1000">
-                                            <h1>World Tech Conference 2023</h1>
+                                            <h1>Insurance Meets Tech 2023</h1>
                                         </div>
                                         <ul class="hero-meta" data-aos="fade-right" data-aos-delay="1500">
                                             <li class="meta-item">
