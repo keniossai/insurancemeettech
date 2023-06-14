@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
     public function seedWithMySql()
     {
         DB::connection()->getPDO()->exec(
-            File::get(database_path('seeders/nbaconfe_2023.sql'))
+            File::get(database_path('seeders/nbaconference_updated.sql'))
         );
     }
 }

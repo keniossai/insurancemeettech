@@ -44,10 +44,10 @@ class ActivateYourRegistration extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('NBA AGC 2023 - Complete your registration in seconds')
+            ->subject('IMT 2023 - Complete your registration in seconds')
             ->greeting("Dear $notifiable->name")
             ->line('Time is precious!')
-            ->line("The NBA AGC 2023 registration portal is now open, and we are very delighted to let you know
+            ->line("The IMT 2023 registration portal is now open, and we are very delighted to let you know
                 that you can easily register for this year's conference using your registration profile from last year.")
             ->line('This lets you skip the long registration form entirely and simply proceed to make payment.')
             ->line("Of course, you'll also have the opportunity to update your profile before making payment,

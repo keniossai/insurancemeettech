@@ -35,7 +35,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Cloudinary
      */
-    const CLOUDINARY_FOLDER = 'nbaconference/user/';
+    const CLOUDINARY_FOLDER = 'imt/user/';
 
     /**
      * The attributes that aren't mass assignable.

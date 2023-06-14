@@ -47,7 +47,7 @@ return [
 
 
     'defaults' => [
-        'photos' => 'imt/background/defaults/'
+        'photos' => 'imt/background/'
     ],
 
     'transformations' => [

@@ -21,13 +21,13 @@ return new class extends Migration
             $table->foreignId('branch_id')->nullable()->constrained();
             $table->foreignId('enrol_id')->nullable()->constrained();
 
-            $table->string('title');
             $table->string('first_name');
             $table->string('middle_name')->nullable();
             $table->string('last_name');
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
+            $table->string('designation')->nullable();
             $table->string('phone')->unique()->nullable();
             $table->string('reg_number')->unique()->nullable();
             $table->string('photo')->nullable();
