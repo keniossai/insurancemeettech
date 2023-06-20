@@ -42,9 +42,6 @@ class StoreTransactionRequest extends FormRequest
 
         return Transaction::whereHas('payments', function ($query) use ($fee) {
 
-            $query->whereBelongsTo($fee)->whereBelongsTo($this->user);
-
-        })->firstOr(function () use ($fee) {
 
             $transaction = Transaction::create([
                 'reference' => uniqid('nba'),
@@ -52,7 +49,7 @@ class StoreTransactionRequest extends FormRequest
             ]);
 
             Payment::updateOrCreate(
-                ['user_id'          => $this->user->id],
+                ['user_id'          => $this->user->id, 'fee_id' => $fee->id],
                 ['transaction_id'   => $transaction->id]
             );
 
