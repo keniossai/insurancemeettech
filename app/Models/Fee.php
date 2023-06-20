@@ -13,44 +13,51 @@ class Fee extends Model
 {
     use HasFactory;
 
-    public function name(): Attribute
-    {
-        if ($this->category) {
+    // public function name(): Attribute
+    // {
+    //     if ($this->category) {
 
-            $name = $this->category->name;
+    //         $name = $this->category->name;
 
-        } else {
-            $name = ($this->min_age > 20)
-                ? "Above 20 Years"
-                : "{$this->min_age} to {$this->max_age} Years";
-        }
+    //     } else {
+    //         $name = ($this->min_age > 20)
+    //             ? "Above 20 Years"
+    //             : "{$this->min_age} to {$this->max_age} Years";
+    //     }
 
-        return Attribute::get(fn () => $name);
-    }
+    //     return Attribute::get(fn () => $name);
+    // }
 
+    // public function amountPayable(): Attribute
+    // {
+    //     $scn = user()->enrol->scn ?? Null;
+
+    //     if (Discount::query()->whereScn($scn)->first())
+    //     {
+    //         $amount = ($this->period->id == 1)
+    //             ?  ($this->amount / 2)
+    //             : $this->amount;
+    //     }
+    //     else
+    //     {
+    //         $amount = $this->amount;
+    //     }
+
+    //     return Attribute::get(fn () => $amount);
+    // }
     public function amountPayable(): Attribute
     {
-        $scn = user()->enrol->scn ?? Null;
 
-        if (Discount::query()->whereScn($scn)->first())
-        {
-            $amount = ($this->period->id == 1)
-                ?  ($this->amount / 2)
-                : $this->amount;
-        }
-        else
-        {
             $amount = $this->amount;
-        }
 
         return Attribute::get(fn () => $amount);
     }
 
 
-    public function attendance(): Attribute
-    {
-        return Attribute::get(fn () => $this->period->attendance);
-    }
+    // public function attendance(): Attribute
+    // {
+    //     return Attribute::get(fn () => $this->period->attendance);
+    // }
 
 
     /**
@@ -58,14 +65,14 @@ class Fee extends Model
      *
      * @return bool
      */
-    public function hasExpired(): bool
-    {
-        if (user()->isEnforcedForEarlyBird()) {
-            return false;
-        }
+    // public function hasExpired(): bool
+    // {
+    //     if (user()->isEnforcedForEarlyBird()) {
+    //         return false;
+    //     }
 
-        return $this->period->expires_at->isPast();
-    }
+    //     return $this->period->expires_at->isPast();
+    // }
 
 
     public function scopeForUser(Builder $builder, User $user)
