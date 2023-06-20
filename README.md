@@ -1,8 +1,6 @@
-<p align="center"><a href="https://nbaconference.com" target="_blank"><img src="https://nbaconference.com/images/logos/NBA_logo1.png" width="100"></a></p>
-
 ## About NBA Conference
 
-The project contains the conference website and registration portal for the NBA Annual General Conference.
+The project contains the conference website and registration portal for the IMT Conference.
 
 ## Language and Framework
 
