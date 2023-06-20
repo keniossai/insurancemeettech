@@ -20,4 +20,9 @@ class DashboardController extends Controller
 
         return view('dashboard.index', compact(['users', 'users_count', 'transactions_count', 'transactions_sum_amount']));
     }
+
+    public function admin()
+    {
+        return view('admin.index');
+    }
 }
