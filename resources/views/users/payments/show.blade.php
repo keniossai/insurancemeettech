@@ -56,13 +56,6 @@
                 <section class="col-lg-8">
                     <div class="hero-form mt-0 grey-bg p-3">
 
-                        @empty($fee)
-                            <div class="alert alert-warning">
-                                Uh oh! Something's not right.<br>
-                                We couldn't find your payment category. Please contact support for assistance.
-                            </div>
-                        @else
-
                         <div class="pricing-area pricing-area-2 section-padding-08" style="background-image: url({{ asset('assets/images/bg/footer_bg1.jpg') }});">
                             <div class="pricing-wrapper">
                                 <div class="container">
@@ -82,7 +75,7 @@
                                                 <div class="price-header purple-bg">
                                                     <img src="{{ asset('assets/images/shape/price_shape1.png') }}" alt="Shape" class="price-header-shape">
                                                     <span class="price-plan">Regular</span>
-                                                    <h3 class="">NGN @money($fee->amountPayable)</h3>
+                                                    <h3 class="text-white" style="font-size: 40px;">NGN 7,000</h3>
                                                 </div>
                                                 <div class="price-body">
                                                     <ul class="price-desc">
@@ -94,7 +87,7 @@
                                                 </div>
                                                 <div class="price-footer">
                                                     <form action="{{ route('api.users.transactions.store', $user) }}" method="post" class="x-submit" data-then="paystackInit">
-                                                        <input type="hidden" name="fee_id" value="{{ $fee->id }}">
+                                                        <input type="hidden" name="fee_id" value="7000">
                                                         <button class="btn price-btn btn-purple" type="submit">
                                                             Pay Now <x-spinner />
                                                         </button>
@@ -109,7 +102,6 @@
                                 </div>
                             </div>
                         </div>
-                        @endif
                     </div>
                 </section>
             </div>

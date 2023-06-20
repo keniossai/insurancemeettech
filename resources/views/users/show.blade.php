@@ -35,7 +35,7 @@
                 </form>
             </div>
         @endif
-        <div class="row justify-content-center g-5">
+        <div class="row justify-content-center">
             <div class="col-lg-4">
                 <div class="hero-form mt-0 grey-bg p-3 text-center">
                     <img src="{{ $user->photo }}" width="180" alt="photo" class="rounded-circle">
@@ -51,8 +51,8 @@
                         {{ $user->full_name }}
                         <br>
                         <span>{{ $user->designation }}</span>
-                        <span>{{ $user->organization }}</span>
                     </h2>
+                    <span>{{ $user->organization }}</span>
                     <p class="text-center">
                         {{ $user->email }} <x-verified :verified="$user->hasVerifiedEmail()" />
                     </p>
@@ -63,7 +63,7 @@
 
                             @empty($payment)
 
-                                <p><label class="label label-warning p-2"><i class="fa fa-exclamation-triangle"></i> Registration Payment Pending </label></p>
+                                {{-- <p><label class="label label-warning p-2"><i class="fa fa-exclamation-triangle"></i> Registration Payment Pending </label></p> --}}
                                 <p><a href="{{ route('users.payments.show', $user) }}" ><button style="padding: 10px 20px;" class="submit_btn">Pay now</button></a></p>
 
                             @else
@@ -88,6 +88,7 @@
 
                     <form class="exvent-form x-submit" action="{{ route('api.users.update', $user) }}" method="post"
                     data-then="alert">
+                    @method("PUT")
                         <div class="row gy-4">
                             <div class="col-md-6">
                                 <div class="single-input white-bg">
@@ -172,7 +173,7 @@
         </div>
     </div>
 </div>
-    
+
 @endsection
 
 @push('script')

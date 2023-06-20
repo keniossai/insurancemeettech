@@ -17,10 +17,6 @@ return new class extends Migration
             $table->engine = 'InnoDB';
 
             $table->id();
-            $table->foreignId('category_id')->nullable()->constrained();
-            $table->foreignId('branch_id')->nullable()->constrained();
-            $table->foreignId('enrol_id')->nullable()->constrained();
-
             $table->string('first_name');
             $table->string('middle_name')->nullable();
             $table->string('last_name');
@@ -34,7 +30,6 @@ return new class extends Migration
 
             $table->enum('gender', ['M', 'F'])->nullable();
             $table->string('organization')->nullable();
-            $table->year('year_of_call')->nullable();
 
             $table->boolean('is_admin')->nullable();
             $table->integer('login_count')->nullable();

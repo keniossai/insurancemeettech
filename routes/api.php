@@ -1,21 +1,15 @@
 <?php
 
-use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\DiscountController;
-use App\Http\Controllers\Api\EnrolController;
-use App\Http\Controllers\Api\GroupMemberController;
-use App\Http\Controllers\Api\GroupPaymentController;
-use App\Http\Controllers\Api\ReconciliationController;
-use App\Http\Controllers\Api\RegisterController;
-use App\Http\Controllers\Api\ResendWelcomeEmailController;
-use App\Http\Controllers\Api\SpeakerController;
-use App\Http\Controllers\Api\TransactionController;
-use App\Http\Controllers\Api\UploadSCNController;
-use App\Http\Controllers\Api\UploadSponsoredDelegateController;
-use App\Http\Controllers\Api\UserController;
-use App\Http\Controllers\Api\UserPhotoController;
-use App\Http\Controllers\Api\VerificationController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\EnrolController;
+use App\Http\Controllers\Api\SpeakerController;
+use App\Http\Controllers\Api\RegisterController;
+use App\Http\Controllers\Api\UserPhotoController;
+use App\Http\Controllers\Api\TransactionController;
+use App\Http\Controllers\Api\VerificationController;
+use App\Http\Controllers\Api\ResendWelcomeEmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,16 +29,13 @@ Route::controller(AuthController::class)->prefix('/auth')->group(function () {
 });
 
 Route::post('register', [RegisterController::class, 'store'])->name('register');
-
-Route::get('/enrols',                                  [EnrolController::class, 'index'])->name('enrols.index');
-Route::resource('upload-scn',               UploadSCNController::class)->only(['store']);
-Route::resource('sponsored-scn',     UploadSponsoredDelegateController::class)->only(['store']);
-Route::resource('discount-scn',             DiscountController::class)->only(['store']);
-Route::resource('reconcile',             ReconciliationController::class)->only(['store']);
 Route::get('/speakers/{speaker}',                      [SpeakerController::class, 'show'])->name('speakers.show');
 
+// Route::get('/enrols',                                  [EnrolController::class, 'index'])->name('enrols.index');
+// Route::resource('upload-scn',               UploadSCNController::class)->only(['store']);
+
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/enrols', [EnrolController::class, 'store'])->name('enrols.store');
+    // Route::post('/enrols', [EnrolController::class, 'store'])->name('enrols.store');
 
     Route::prefix('/users/{user}')->name('users.')->group(function () {
         Route::put('/',                 [UserController::class, 'update'])->name('update');
@@ -55,7 +46,4 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/welcome-email', ResendWelcomeEmailController::class)->name('welcome-email');
     });
 
-    Route::post('/groups/{user}/pay',                [GroupPaymentController::class, 'store'])->name('groups.payments.store');
-    Route::post('/groups/{user}/members',            [GroupMemberController::class, 'store'])->name('groups.members.store');
-    Route::delete('/groups/{user}/members/{member}', [GroupMemberController::class, 'destroy'])->name('groups.members.destroy');
 });

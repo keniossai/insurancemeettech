@@ -52,7 +52,7 @@ class StoreTransactionRequest extends FormRequest
             ]);
 
             Payment::updateOrCreate(
-                ['user_id'          => $this->user->id, 'fee_id' => $fee->id],
+                ['user_id'          => $this->user->id],
                 ['transaction_id'   => $transaction->id]
             );
 

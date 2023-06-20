@@ -1,8 +1,6 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\EnrolController;
-use App\Http\Controllers\GroupController;
 use App\Http\Controllers\RegistrationDownloadController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TransactionController;
@@ -14,7 +12,6 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\PaystackWebhookController;
 use App\Http\Controllers\SpeakerController;
-use App\Http\Controllers\CardController;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 
@@ -34,9 +31,6 @@ Route::get('/test', function(){
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::view('/cards/create',    'cards.create')->name('cardse.create');
-Route::post('/generate',        [CardController::class, 'generate'])->name('generate');
-Route::view('/concept-note',    'concept_note')->name('concept-note');
 Route::view('/privacy-policy',  'privacy_policy')->name('privacy-policy');
 
 Route::middleware('guest')->group(function () {
@@ -45,7 +39,6 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::get('/register',         [AuthController::class, 'register'])->name('register');
-Route::view('/register/group',  'auth.register.group')->name('register.group');
 
 Route::resource('speakers', SpeakerController::class)->only(['index', 'show']);
 
@@ -58,12 +51,10 @@ Route::middleware('auth')->group(function () {
 
         Route::middleware(['unpaid', 'verified-to-pay'])->group(function () {
             Route::get('/payments', [PaymentController::class, 'show'])->name('payments.show');
-            Route::get('/group',    [GroupController::class, 'index'])->name('group.index');
         });
     });
 
     Route::get('/search',                       [SearchController::class, 'index'])->name('search.index');
-    Route::get('/enrols/{enrol}',               [EnrolController::class, 'show'])->name('enrols.show');
     Route::get('/transactions/{transaction}',   [TransactionController::class, 'show'])->name('transactions.show');
     Route::get('/transactions/{transaction}/pay', TransactionPayController::class)->name('transactions.pay');
 

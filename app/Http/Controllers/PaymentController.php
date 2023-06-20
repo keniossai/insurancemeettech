@@ -46,8 +46,7 @@ class PaymentController extends Controller
 
     public function show(User $user)
     {
-        $fee = Fee::forUser($user)->first();
 
-        return view('users.payments.show', compact(['user', 'fee']));
+        return view('users.payments.show', compact('user'));
     }
 }

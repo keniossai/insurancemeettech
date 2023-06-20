@@ -24,11 +24,9 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        $categories = Category::all();
-        $branches   = Branch::all();
 
         $payment    = $user->payments()->paid()->first();
 
-        return view('users.show', compact(['user', 'payment', 'categories', 'branches']));
+        return view('users.show', compact(['user', 'payment']));
     }
 }

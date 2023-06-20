@@ -77,9 +77,9 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="single-input white-bg">
-                                    
-                                        <select class="single-input white-bg" name="gender" id="gender"
-                                            required>
+
+                                        <select style="border: none; padding: 10px 25px; box-shadow: none; line-height: 30px; transition: all 0.3s linear;" class="form-control single-input white-bg" name="gender" id="gender"
+                                        required>
                                             <option value="">Select gender</option>
                                             <option value="M">Male</option>
                                             <option value="F">Female</option>
