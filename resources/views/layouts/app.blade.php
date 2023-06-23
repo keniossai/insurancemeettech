@@ -63,33 +63,45 @@
                 <div class="header-wrap">
 
                     <div class="header-logo">
-                        <a href="index.html"><img src="assets/images/logo/logo2.png" alt=""></a>
+                        <a href="/"><img  src="{{ asset('assets/images/logo/IMT 2.0-02.png') }}" alt=""></a>
                     </div>
 
                     <div class="header-menu d-none d-lg-block">
                         <ul class="main-menu">
-                            <li class="active-menu">
-                                <a href="index.html">Home</a>
-                            </li>
                             <li><a href="about.html">Aboute Us</a></li>
                             <li><a href="#">Why Attend</a></li>
                             <li><a href="blog.html">Sponsorship Benefits</a></li>
                             <li><a href="about.html">Organisers</a></li>
                             <li><a href="contact.html">Contact</a></li>
+                            @auth
+                                <li>
+                                    <a href="blog.html">
+                                        <img src="{{ user('photo') }}" alt="Photo" width="30"
+                                                class="rounded-circle">
+                                            {{ user('name') }}
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="{{ route('users.show', user()) }}">Profile</a></li>
+                                        <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                        <li><a href="{{ route('logout') }}">Logout</a></li>
+                                    </ul>
+                                </li>
+                            @else
+                            <li><a href="{{ route('login') }}">login</a></li>
                         </ul>
                     </div>
 
                     <!-- Header Meta Start -->
                     <div class="header-meta">
 
-                        <!-- Header Button Start -->
+
                         <div class="header-btn d-none d-xl-block">
                             <a href="{{ route('register') }}">
-                                <button class="btn-5" style="width: 150px;">Register Now</button>
+                                <button class="btn-5" style="width: 130px;">Register Now</button>
                             </a>
                         </div>
                         <!-- Header Button End -->
-
+                        @endif
                         <!-- Header Toggle Start -->
                         <div class="header-toggle d-lg-none">
                             <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">
