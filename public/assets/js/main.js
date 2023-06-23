@@ -20,11 +20,11 @@
         } else {
             left.classList.remove("sticky");
         }
-    }   
-    
-    
+    }
 
-    
+
+
+
     /*--
         Menu parent Element Icon
     -----------------------------------*/
@@ -78,9 +78,9 @@
 		e.stopPropagation();
 	});
 
-        
+
     /*--
-        Mobile Menu 
+        Mobile Menu
     -----------------------------------*/
 
     /* Get Sibling */
@@ -150,7 +150,7 @@
 
 
     /*--
-		Offcanvas/Collapseable Menu 
+		Offcanvas/Collapseable Menu
 	-----------------------------------*/
     const offCanvasMenu = function (selector) {
 
@@ -200,23 +200,23 @@
     offCanvasMenu('.offcanvas-menu');
 
   /*--
-    magnificPopup video view 
-  -----------------------------------*/	
+    magnificPopup video view
+  -----------------------------------*/
 	$('.popup-video').magnificPopup({
 		type: 'iframe'
 	});
 
    /*--
     Lightbox Gallery
-  -----------------------------------*/	
+  -----------------------------------*/
 
   lightbox.option({
     'wrapAround': true
   });
 
-  /*--    
+  /*--
       Counter Up
-  -----------------------------------*/  
+  -----------------------------------*/
 
     $('.counter').counterUp({
         delay: 10,
@@ -227,7 +227,7 @@
         effect: "fade",
         loop: "true",
         autoplay: {
-          delay: 3000
+          delay: 5000
         },
         // direction: "vertical",
         pagination: {
@@ -235,13 +235,13 @@
           clickable: true,
         },
     });
-   
+
 
 
     /*--
 		Mousemove Parallax
 	-----------------------------------*/
-    var b = document.getElementsByTagName("BODY")[0];  
+    var b = document.getElementsByTagName("BODY")[0];
 
     b.addEventListener("mousemove", function(event) {
     parallaxed(event);
@@ -259,7 +259,7 @@
     }
 
 
-      /*--    
+      /*--
         Testimonial
     -----------------------------------*/
     var swiper = new Swiper(".author-images-active .swiper-container", {
@@ -289,9 +289,9 @@
 
 
 
-    /*--    
+    /*--
       Progress Bar
-  -----------------------------------*/  
+  -----------------------------------*/
 
     if($('.progress-line').length) {
         $('.progress-line').appear(function(){
@@ -304,7 +304,7 @@
 
     /*--
         AOS
-    -----------------------------------*/   
+    -----------------------------------*/
     AOS.init({
         duration: 1200,
         once: true,
@@ -342,17 +342,17 @@
         minsLeft = Math.floor((e_hrsLeft - hrsLeft) * 60),
         e_secsLeft = (e_minsLeft - minsLeft) * 60,
         secsLeft = Math.floor((e_minsLeft - minsLeft) * 60);
-  
+
       var yearsLeft = 0;
       var monthsLeft = 0
       var weeksLeft = 0;
-  
+
       if ($format != 'short') {
         if (daysLeft > 365) {
           yearsLeft = Math.floor(daysLeft / 365);
           daysLeft = daysLeft % 365;
         }
-  
+
         if (daysLeft > 30) {
           monthsLeft = Math.floor(daysLeft / 30);
           daysLeft = daysLeft % 30;
@@ -362,7 +362,7 @@
           daysLeft = daysLeft % 7;
         }
       }
-  
+
       var yearsLeft = yearsLeft < 10 ? "0" + yearsLeft : yearsLeft,
         monthsLeft = monthsLeft < 10 ? "0" + monthsLeft : monthsLeft,
         weeksLeft = weeksLeft < 10 ? "0" + weeksLeft : weeksLeft,
@@ -377,7 +377,7 @@
         hourText = hrsLeft > 1 ? 'Hours' : 'Hour',
         minsText = minsLeft > 1 ? 'Minutes' : 'Minute',
         secText = secsLeft > 1 ? 'Seconds' : 'Second';
-  
+
       var $markup = {
         wrapper: $this.find('.countdown__item'),
         year: $this.find('.yearsLeft'),
@@ -395,7 +395,7 @@
         minTxt: $this.find('.minsText'),
         secTxt: $this.find('.secsText')
       }
-  
+
       var elNumber = $markup.wrapper.length;
       $this.addClass('item-' + elNumber);
       $($markup.year).html(yearsLeft);
@@ -413,7 +413,7 @@
       $($markup.second).html(secsLeft);
       $($markup.secTxt).html(secText);
   }
-  
+
   $('.countdown').each(function () {
       var $this = $(this);
       var $endDate = $(this).data('countdown');

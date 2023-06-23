@@ -16,7 +16,7 @@
 
     {{-- <link rel="icon" type="image/png" href="{{ asset('images/logos/NBA_logo1.png') }}"> --}}
 
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/favicon.png') }}">
 
     <!-- Site Title -->
     <title>@yield('title', config('app.name'))</title>

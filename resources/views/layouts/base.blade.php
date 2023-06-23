@@ -124,7 +124,7 @@
                 <div class="col-sm-6">
                     <script>
                         document.write(new Date().getFullYear())
-                    </script> ©, IMT - Insurance Meets Tech 
+                    </script> ©, IMT - Insurance Meets Tech
                 </div>
                 <div class="col-sm-6">
                     <div class="text-sm-end">
@@ -142,6 +142,8 @@
     <script src="{{ asset('js/vendors/chart.js')}}"></script>
     <!-- Main Script -->
     <script src="{{ asset('js/main.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/request.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/sweetalert.js')}}" type="text/javascript"></script>
     <script src="{{ asset('js/custom-chart.js')}}" type="text/javascript"></script>
 </body>
 

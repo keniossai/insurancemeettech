@@ -15,11 +15,12 @@
                     <h4>Register a speaker</h4>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form class="x-submit" action="{{ route('speaker.store') }}" method="post"
+                    data-then="alert" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-lg-4">
                                 <label class="form-label">Title</label>
-                                <select class="form-select">
+                                <select class="form-select" name="title" required id="title">
                                     <option>Alh</option>
                                     <option>Chief</option>
                                     <option>Dr</option>
@@ -45,45 +46,45 @@
                                 <div class="mb-4">
                                     <label class="form-label">First Name</label>
                                     <div class="row gx-2">
-                                        <input placeholder="" name="first_name" type="text" class="form-control">
+                                        <input placeholder="" required id="first_name" name="first_name" type="text" class="form-control">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="mb-4">
                                     <label class="form-label">Middle Name</label>
-                                    <input placeholder="" name="middle_name" type="text" class="form-control">
+                                    <input placeholder="" required id="middle_name" name="middle_name" type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-4">
                                     <label class="form-label">Last Name</label>
-                                    <input placeholder="" name="last_name" type="text" class="form-control">
+                                    <input placeholder="" required id="last_name" name="last_name" type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-4">
                                     <label class="form-label">Designation</label>
-                                    <input placeholder="" name="designation" type="text" class="form-control">
+                                    <input placeholder="" required id="designation" name="designation" type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-4">
                                     <label class="form-label">Organization</label>
-                                    <input placeholder="" name="organization" type="text" class="form-control">
+                                    <input placeholder="" required id="organization" name="organization" type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-4">
                                     <label class="form-label">Slug</label>
-                                    <input placeholder="" name="slug" type="text" class="form-control">
+                                    <input placeholder="" required id="slug" name="slug" type="text" class="form-control">
                                 </div>
                             </div>
 
                         </div>
                         <div class="mb-4">
                             <label class="form-label">About(Biography)</label>
-                            <textarea placeholder="Type here" name="" class="form-control" rows="4"></textarea>
+                            <textarea placeholder="" required id="bio" name="bio" class="form-control" rows="4"></textarea>
                         </div>
                     </form>
                 </div>
@@ -101,13 +102,18 @@
                     </div>
                 </div>
             </div> <!-- card end// -->
-            
+
         </div>
 
         <div>
             <button class="btn btn-light rounded font-sm mr-5 text-body hover-up">Cancel</button>
-            <button class="btn btn-md rounded font-sm hover-up" type="submit">Publich</button>
+            <button class="btn btn-md rounded font-sm" type="button">Publish <x-spinner /> </button>
         </div>
     </div>
 </section>
+<script>
+    form.addEventListener('submit', function(event){
+        event.preventDefault();
+    })
+</script>
 @endsection

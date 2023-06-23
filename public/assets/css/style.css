@@ -3352,7 +3352,7 @@ textarea:-ms-input-placeholder {
 }
 
 .event-counter-section .counter-item span {
-  font-size: 18px;
+  /* font-size: 18px; */
   font-weight: 700;
   text-transform: uppercase;
   color: #000000;

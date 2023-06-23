@@ -17,10 +17,14 @@ return new class extends Migration
             $table->engine = 'InnoDB';
 
             $table->id();
-            $table->string('name');
-            $table->string('slug');
+            $table->string('title');
+            $table->string('first_name');
+            $table->string('middle_name')->nullable();
+            $table->string('last_name');
+            $table->string('designation')->nullable();
+            $table->string('organization')->nullable();
+            $table->string('slug')->nullable();
             $table->text('bio')->nullable();
-            $table->text('designation')->nullable();
             $table->enum('gender', ['M', 'F'])->nullable();
             $table->string('photo')->nullable();
 
@@ -28,6 +32,8 @@ return new class extends Migration
 
             $table->foreignId('created_by')->nullable()->constrained('users');
             $table->foreignId('updated_by')->nullable()->constrained('users');
+
+            // $table->fullText(['first_name', 'last_name', 'middle_name', 'bio', 'designation', 'organization']);
         });
     }
 
