@@ -19,14 +19,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->string('email')->nullable()->unique();
-            $table->string('phone')->nullable()->unique();
             $table->text('bio')->nullable();
             $table->text('designation')->nullable();
             $table->enum('gender', ['M', 'F'])->nullable();
             $table->string('photo')->nullable();
-            $table->boolean('is_key')->default(false);
-            $table->tinyInteger('position')->default(1);
 
             $table->timestamps();
 

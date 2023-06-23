@@ -38,7 +38,7 @@ Route::middleware('guest')->group(function () {
 
 Route::get('/register',         [AuthController::class, 'register'])->name('register');
 
-Route::resource('speakers', SpeakerController::class)->only(['index', 'show']);
+Route::resource('speaker', SpeakerController::class)->only(['index', 'create', 'show']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])

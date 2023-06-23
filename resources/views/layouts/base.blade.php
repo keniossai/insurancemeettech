@@ -60,7 +60,7 @@
                         <span class="text">Event Schedules</span>
                     </a>
                     <div class="submenu">
-                        <a href="page-account-login.html">View All</a>
+                        <a href="">View All</a>
                         <a href="page-account-register.html">Add Schedule</a>
                     </div>
                 </li>
@@ -124,7 +124,7 @@
                 <div class="col-sm-6">
                     <script>
                         document.write(new Date().getFullYear())
-                    </script> ©, Evara - HTML Ecommerce Template .
+                    </script> ©, IMT - Insurance Meets Tech 
                 </div>
                 <div class="col-sm-6">
                     <div class="text-sm-end">
