@@ -369,7 +369,7 @@
         <!-- About Area End -->
 
         <!-- Speaker Area Start -->
-        <div class="speaker-section-3 section-padding-04">
+        {{-- <div class="speaker-section-3 section-padding-04">
             @if (false)
             <div class="container">
                 <div class="row">
@@ -427,7 +427,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- Speaker Area End -->
 
         <!-- Schedule Area Start -->
