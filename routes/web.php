@@ -58,6 +58,7 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('admin')->group(function () {
         Route::get('/dashboard',        [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/dashboard/users',        [DashboardController::class, 'show'])->name('dashboard.users');
         Route::get('/payments',         [PaymentController::class, 'index'])->name('payments.index');
         Route::get('/registration-download', RegistrationDownloadController::class)->name('registration-download');
 

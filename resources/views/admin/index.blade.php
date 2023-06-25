@@ -82,6 +82,7 @@
                                     <th>Name</th>
                                     <th>Organization</th>
                                     <th>Date created</th>
+                                    <th></th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
@@ -91,9 +92,10 @@
                                     <td>Search Engine Marketing</td>
                                     <td class="font-weight-bold">$362</td>
                                     <td>21 Sep 2018</td>
+                                    <td></td>
                                     <td>
-                                        <a href="" type="button" class="btn btn-info btn-rounded btn-fw">Edit</a>
-                                        <a href="" type="button" class="btn btn-danger btn-rounded btn-fw">Danger</a>
+                                        <a href="" type="button" class="btn btn-primary btn-sm">Edit</a>
+                                        <a href="" type="button" class="btn btn-danger btn-sm">Delete</a>
                                     </td>
                                 </tr>
 

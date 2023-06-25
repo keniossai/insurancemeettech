@@ -21,8 +21,9 @@ class DashboardController extends Controller
         return view('dashboard.index', compact(['users', 'users_count', 'transactions_count', 'transactions_sum_amount']));
     }
 
-    public function admin()
+    public function show()
     {
-        return view('admin.index');
+        $users                   = User::thisYear()->simplePaginate();
+        return view('dashboard.users', compact(['users']));
     }
 }
