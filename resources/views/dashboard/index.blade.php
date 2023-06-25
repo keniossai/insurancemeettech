@@ -94,17 +94,19 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>Image</td>
-                                    <td>Search Engine Marketing</td>
-                                    <td class="font-weight-bold">$362</td>
-                                    <td>21 Sep 2018</td>
-                                    <td></td>
-                                    <td>
-                                        <a href="" type="button" class="btn btn-primary btn-sm">Edit</a>
-                                        <a href="" type="button" class="btn btn-danger btn-sm">Delete</a>
-                                    </td>
-                                </tr>
+                                    @foreach($speakers as $speaker)
+                                        <tr>
+                                            <td><img src="speaker/{{$speaker->image}}" /></td>
+                                            <td>{{$speaker->name}}</td>
+                                            <td class="font-weight-bold">{{$speaker->organization}}</td>
+                                            <td>{{$speaker->created_at->toDayDateTimeString()}}</td>
+                                            <td></td>
+                                            <td>
+                                                <a href="" type="button" class="btn btn-primary btn-sm">Edit</a>
+                                                <a href="" type="button" class="btn btn-danger btn-sm">Delete</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
 
                                 </tbody>
                             </table>

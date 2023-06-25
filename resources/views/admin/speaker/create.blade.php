@@ -8,9 +8,9 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Add Speaker</h4>
-                        <form class="forms-sample">
+                        <form class="forms-sample x-submit" enctype="multipart/form-data" action="{{route('speaker.store')}}" method="post" data-then="reload">
                             <div class="row">
-                                <div class="col-md-2">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleSelectGender">Title</label>
                                         <select class="form-control" name="title" id="title" required>
@@ -28,36 +28,30 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="exampleInputName1">First Name</label>
-                                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Name">
-                                    </div>
-                                </div>
-                                <div class="col-md-5">
-                                    <div class="form-group">
-                                        <label for="exampleInputName1">Last Name</label>
-                                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Name">
+                                        <label for="exampleInputName1">Full Name</label>
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleInputName1">slug</label>
-                                        <input type="text" class="form-control" id="slug" name="slug" placeholder="Name">
+                                        <input type="text" class="form-control" id="slug" name="slug" placeholder="Name" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleInputName1">Organization</label>
-                                        <input type="text" class="form-control" id="organization" name="organization" placeholder="Name">
+                                        <input type="text" class="form-control" id="organization" name="organization" placeholder="Name" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleSelectGender">Gender</label>
-                                        <select class="form-control" id="gender" name="gender">
-                                            <option>Male</option>
-                                            <option>Female</option>
+                                        <select class="form-control" id="gender" name="gender" required>
+                                            <option value="M">Male</option>
+                                            <option value="F">Female</option>
                                         </select>
                                     </div>
                                 </div>
@@ -65,19 +59,18 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>File upload</label>
-                                        <input class="form-control file-upload-info" placeholder="Upload Image" id="photo" name="photo" type="file">
+                                        <input class="form-control file-upload-info" placeholder="Upload Image" id="image" name="image" type="file" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="exampleTextarea1">Biography</label>
-                                        <textarea class="form-control" id="bio" name="bio" rows="6"></textarea>
+                                        <textarea class="form-control" id="bio" name="bio" rows="6" required></textarea>
                                     </div>
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                            <button class="btn btn-light">Cancel</button>
+                            <button type="submit" class="btn btn-primary mr-2">Submit <x-spinner /> </button>
                         </form>
                     </div>
                 </div>

@@ -4,7 +4,15 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Mobile Specific Metas ================================================== -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="IMT Conference">
+
+    <meta name="keywords" content="IMT Conference">
+    <meta name="author" content="Kenneth Ossai">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="robots" content="index,follow">
     <title>@yield('title', config('app.name'))</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{asset('vendors/feather/feather.css')}}">
@@ -166,6 +174,10 @@
 <script src="{{asset('js/template.js')}}"></script>
 <script src="{{asset('js/settings.js')}}"></script>
 <script src="{{asset('js/todolist.js')}}"></script>
+<script src="{{asset('js/request.js')}}"></script>
+<script src="{{asset('js/sweetalert.js')}}"></script>
+<script src="{{asset('js/validate.js')}}"></script>
+<script src="{{asset('js/bootstrap-notify.js')}}"></script>
 <!-- endinject -->
 <!-- Custom js for this page-->
 <script src="{{asset('js/dashboard.js')}}"></script>

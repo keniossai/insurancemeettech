@@ -18,20 +18,16 @@ return new class extends Migration
 
             $table->id();
             $table->string('title');
-            $table->string('first_name');
-            $table->string('middle_name')->nullable();
-            $table->string('last_name');
+            $table->string('name')->unique();
             $table->string('designation')->nullable();
             $table->string('organization')->nullable();
             $table->string('slug')->nullable();
             $table->text('bio')->nullable();
             $table->enum('gender', ['M', 'F'])->nullable();
-            $table->string('photo')->nullable();
+            $table->string('image')->nullable();
 
             $table->timestamps();
 
-            $table->foreignId('created_by')->nullable()->constrained('users');
-            $table->foreignId('updated_by')->nullable()->constrained('users');
 
             // $table->fullText(['first_name', 'last_name', 'middle_name', 'bio', 'designation', 'organization']);
         });

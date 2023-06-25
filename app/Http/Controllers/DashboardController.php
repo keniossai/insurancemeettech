@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Speaker;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -10,6 +11,7 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
+        $speakers = Speaker::get();
         $users                   = User::thisYear()->simplePaginate();
         $users_count             = User::whereHas('payments', fn($q)=> $q->paid())->count();
         $transactions_count      = Transaction::has('payments')->count();
@@ -18,7 +20,7 @@ class DashboardController extends Controller
         //dd(Transaction::has('payments')->pending()->count());
        // dd(Transaction::has('payments')->paid()->count());
 
-        return view('dashboard.index', compact(['users', 'users_count', 'transactions_count', 'transactions_sum_amount']));
+        return view('dashboard.index', compact(['users', 'speakers', 'users_count', 'transactions_count', 'transactions_sum_amount']));
     }
 
     public function show()
