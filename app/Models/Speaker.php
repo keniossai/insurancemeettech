@@ -23,11 +23,11 @@ class Speaker extends Model
     }
 
 
-    function photo()
-    {
-        return cloudinary_url($this->photo, [
-            "gravity" => "face", "height" => 400, "width" => 400, "crop" => "fill"
-        ]);
-    }
+//    function photo()
+//    {
+//        return cloudinary_url($this->photo, [
+//            "gravity" => "face", "height" => 400, "width" => 400, "crop" => "fill"
+//        ]);
+//    }
 
 }

@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="{{ asset('assets') }}/css/plugins/magnific-popup.css">
     <link rel="stylesheet" href="{{ asset('assets') }}/css/plugins/lightbox.min.css">
     <link rel="stylesheet" href="{{ asset('assets') }}/css/plugins/gijgo.min.css">
-    <link rel="stylesheet" href="{{ asset('scss/loader.scss') }}">
+    <link rel="stylesheet" href="{{ asset('scsss/loader.scsss') }}">
 
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="{{ asset('assets') }}/css/style.css">

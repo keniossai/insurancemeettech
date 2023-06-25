@@ -41,7 +41,7 @@
     <!-- Responsive styles-->
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     {{-- coming soon --}}
-    <link rel="stylesheet" href="{{ asset('scss/loader.scss') }}">
+    <link rel="stylesheet" href="{{ asset('scsss/loader.scsss') }}">
 
     <script src="{{ asset('js/jquery.js') }}"></script>
 
