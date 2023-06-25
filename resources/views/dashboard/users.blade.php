@@ -7,7 +7,7 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <p class="card-title mb-0">Speakers</p>
+                        <p class="card-title mb-0">Registered Attendees</p>
                         <div class="table-responsive">
                             <table class="table table-striped table-borderless">
                                 <thead>
@@ -16,7 +16,7 @@
                                     <th scope="col">Image</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Phone</th>
-                                    <th scope="col">Email</th>
+                                    <th scope="col">Email(Verified)</th>
                                     <th scope="col">Is Admin</th>
                                     <th scope="col">Organisation</th>
                                     <th>Registration Date</th>
