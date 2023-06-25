@@ -22,6 +22,13 @@ class UserController extends Controller
     }
 
 
+//    public function show(User $user)
+//    {
+//
+//        return view('users.show', compact(['user']));
+//    }
+
+//    If user has payment uncomment this
     public function show(User $user)
     {
 
