@@ -9,6 +9,12 @@ class Speaker extends Model
 {
     use HasFactory;
 
+//    const MALE   = 'M';
+//    const FEMALE = 'F';
+
+//    const MALE   = 'M';
+//    const FEMALE = 'F';
+
     /**
      * The attributes that aren't mass assignable.
      *
@@ -17,10 +23,10 @@ class Speaker extends Model
     protected $guarded = [];
 
 
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+//    public function getRouteKeyName()
+//    {
+//        return 'slug';
+//    }
 
 
 //    function photo()

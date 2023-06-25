@@ -102,8 +102,11 @@
                                             <td>{{$speaker->created_at->toDayDateTimeString()}}</td>
                                             <td></td>
                                             <td>
-                                                <a href="" type="button" class="btn btn-primary btn-sm">Edit</a>
-                                                <a href="" type="button" class="btn btn-danger btn-sm">Delete</a>
+                                                <a href="speaker/{{$speaker->id}}" type="button" class="btn btn-primary btn-sm">Edit</a>
+                                                <form method="post" action="speaker/{{ $speaker->id }}" class="d-inline x-submit">
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm">Delete <x-spinner/> </button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

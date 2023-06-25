@@ -40,6 +40,9 @@ Route::get('/register',         [AuthController::class, 'register'])->name('regi
 
 Route::resource('speaker', SpeakerController::class)->only(['index', 'create', 'show']);
 Route::post('speaker/create', [SpeakerController::class, 'store'])->name('speaker.store');
+Route::get('speaker/{id}', [SpeakerController::class, 'show'])->name('speaker.edit');
+Route::put('speaker/{id}', [SpeakerController::class, 'update'])->name('speaker.update');
+Route::delete('speaker/{id}', [SpeakerController::class, 'destroy'])->name('speaker.destroy');
 
 Route::middleware('auth')->group(function () {
     Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])
