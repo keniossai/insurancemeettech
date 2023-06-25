@@ -14,9 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('sponsors', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+
             $table->id();
-            $table->string('name');
-            $table->string('image');
+            $table->string('name')->unique();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sponsors');
+        Schema::dropIfExists('sponsor');
     }
 };

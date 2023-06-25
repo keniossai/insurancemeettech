@@ -12,6 +12,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\PaystackWebhookController;
 use App\Http\Controllers\SpeakerController;
+use App\Http\Controllers\SponsorsController;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +26,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/admin', [DashboardController::class, 'admin'])->name('admin.index');
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -37,6 +37,9 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::get('/register',         [AuthController::class, 'register'])->name('register');
+
+Route::resource('/sponsor', SponsorsController::class)->only(['create']);
+Route::post('/sponsor/create', [SponsorsController::class, 'store'])->name('sponsor.store');
 
 Route::resource('speaker', SpeakerController::class)->only(['index', 'create', 'show']);
 Route::post('speaker/create', [SpeakerController::class, 'store'])->name('speaker.store');

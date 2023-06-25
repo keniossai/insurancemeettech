@@ -112,7 +112,7 @@
                     </a>
                     <div class="collapse" id="charts">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Add Sponsor</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{route('sponsor.create')}}">Add Sponsor</a></li>
                         </ul>
                     </div>
                 </li>
