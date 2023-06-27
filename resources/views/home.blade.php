@@ -39,39 +39,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="exvent-hero-section-05" style="background-image: url(assets/images/bg/slider-bg-2.jpg);">
-                        <div class="container">
-                            <div class="row justify-content-center align-items-center">
-                                <div class="col-md-8 text-center">
-                                    <div class="hero-conent-wrapper">
-                                        <div class="main-title" data-aos="fade-down" data-aos-delay="1000">
-                                            <h1>Thursday, 28 and Friday, 29 September 2023</h1>
-                                        </div>
-                                        <ul class="hero-meta" data-aos="fade-right" data-aos-delay="1500">
-                                            <li class="meta-item">
-                                                <a href="speaker-01.html"><i class="fas fa-user"></i> 10:00 am – 5:00 pm Daily </a>
-                                            </li>
-                                            <li class="meta-item">
-                                                <a href="contact.html"><i class="fas fa-map-marker-alt"></i> Civic Centre, Victoria Island, Lagos</a>
-                                            </li>
-                                        </ul>
-                                        <div class="hero-btn" data-aos="fade-up" data-aos-delay="2000">
-                                            <div class="row justify-content-center">
-                                                <div class="col-lg-3 col-sm-4 col-6">
-                                                    <button class="btn-5">Book Now</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-            <div class="swiper-pagination"></div>
+            {{-- <div class="swiper-pagination"></div> --}}
         </div>
         <!-- Hero End -->
 
@@ -153,7 +122,7 @@
             </div>
         </div>
 
-        
+
         <div class="pricing-area pricing-area-2 section-padding-08" style="background-image: url(assets/images/bg/footer_bg1.jpg);">
             <div class="pricing-wrapper">
                 <div class="container">
@@ -1019,8 +988,7 @@
                     <div class="col-12">
                         <div class="section-title-wrap">
                             <div class="section-title text-center">
-                                <h5 class="sub-title">Sponsors</h5>
-                                <h2 class="title">Sponsors & Delegates</h2>
+                                <h2 class="title">Sponsors</h2>
                             </div>
                         </div>
                     </div>
