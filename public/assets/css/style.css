@@ -318,10 +318,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 /*--Section Title--*/
 .section-title .title {
-  font-size: 50px;
+  font-size: 45px;
   line-height: 62px;
   font-family: "Ubuntu", sans-serif;
-  font-weight: 700;
+  font-weight: 500;
   color: #1a0a1e;
   position: relative;
   z-index: 2;
@@ -360,7 +360,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .section-title .sub-title::after {
   position: absolute;
-  content: '';
+  /* content: ''; */
   height: 15px;
   width: 100%;
   background-color: #fc097c;

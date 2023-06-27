@@ -23,12 +23,6 @@
 
                                         <ul class="hero-meta" data-aos="fade-right" data-aos-delay="1500">
                                             <li class="meta-item">
-                                                <a href="pricing.html"><i class="fas fa-chair"></i> 2500 Seats</a>
-                                            </li>
-                                            <li class="meta-item">
-                                                <a href="speaker-01.html"><i class="fas fa-user"></i> 20 Speakers</a>
-                                            </li>
-                                            <li class="meta-item">
                                                 <a href="#" style="font-size: 18px;"><i class="fas fa-map-marker-alt"></i> Civic Centre, Victoria Island, Lagos</a>
                                             </li>
                                         </ul>
@@ -75,42 +69,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="exvent-hero-section-05" style="background-image: url(assets/images/bg/hero_bg2.jpg);">
-                        <div class="container">
-                            <div class="row justify-content-center align-items-center">
-                                <div class="col-md-8 text-center">
-                                    <div class="hero-conent-wrapper">
-                                        <div class="top-title-date" data-aos="fade-down" data-aos-delay="500">
-                                            <span>September 20, 2025</span>
-                                        </div>
-                                        <div class="main-title" data-aos="fade-down" data-aos-delay="1000">
-                                            <h1>World Business Conferences 2025</h1>
-                                        </div>
-                                        <ul class="hero-meta" data-aos="fade-right" data-aos-delay="1500">
-                                            <li class="meta-item">
-                                                <a href="pricing.html"><i class="fas fa-chair"></i> 1000 Seats</a>
-                                            </li>
-                                            <li class="meta-item">
-                                                <a href="speaker-01.html"><i class="fas fa-user"></i> 15 Speakers</a>
-                                            </li>
-                                            <li class="meta-item">
-                                                <a href="contact.html"><i class="fas fa-map-marker-alt"></i> Boston, Canada</a>
-                                            </li>
-                                        </ul>
-                                        <div class="hero-btn" data-aos="fade-up" data-aos-delay="2000">
-                                            <div class="row justify-content-center">
-                                                <div class="col-lg-3 col-sm-4 col-6">
-                                                    <button class="btn-5">Book Now</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
             <div class="swiper-pagination"></div>
         </div>
@@ -164,8 +123,8 @@
                 <div class="row align-items-center">
                     <div class="col-lg-5 col-12">
                         <div class="section-title">
-                            <h5 class="sub-title">Join This Event</h5>
-                            <h2 class="title">Insurance Meets Tech 2.0 </h2>
+                            <h5 class="sub-title" style="font-size: 35px;">Theme</h5>
+                            <h2 class="title">Unlocking policy and tech bottlenecks hindering disruptive insurance penetration</h2>
                         </div>
                     </div>
                     <div class="col-lg-7 col-12">
@@ -194,6 +153,7 @@
             </div>
         </div>
 
+        
         <div class="pricing-area pricing-area-2 section-padding-08" style="background-image: url(assets/images/bg/footer_bg1.jpg);">
             <div class="pricing-wrapper">
                 <div class="container">

@@ -68,7 +68,7 @@
 
                     <div class="header-menu d-none d-lg-block">
                         <ul class="main-menu">
-                            <li><a href="about.html">Aboute Us</a></li>
+                            <li><a href="about.html">About Us</a></li>
                             <li><a href="#">Why Attend</a></li>
                             <li><a href="blog.html">Sponsorship Benefits</a></li>
                             <li><a href="about.html">Organisers</a></li>
