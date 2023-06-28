@@ -69,10 +69,6 @@
                                     <div class="main-title" data-aos="fade-down" data-aos-delay="1000">
                                         <img src="{{ asset('assets/images/hero.png') }}" alt="">
                                     </div>
-                                    <div class="top-title-date" data-aos="fade-down" data-aos-delay="500">
-                                        <span style="font-size: 22px;">Unlocking policy and tech bottlenecks hindering
-                                            disruptive insurance penetration</span>
-                                    </div>
 
                                     <ul class="hero-meta" data-aos="fade-right" data-aos-delay="1500">
                                         <li class="meta-item">
